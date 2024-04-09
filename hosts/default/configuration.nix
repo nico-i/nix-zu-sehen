@@ -120,6 +120,8 @@
     };
   };
 
+  # Enable modules imported from custom nixosModules
+  # steam.enable = true;
 
   # Enable non-free NVIDIA drivers
   services.xserver.videoDrivers = [ "nvidia" ];
