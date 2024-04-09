@@ -8,9 +8,8 @@ in
     userName = "${userData.firstName} ${userData.lastName}";
     userEmail = userData.email;
     extraConfig = {
-      init = {
-        defaultBranch = "main";
-      };
+      init.defaultBranch = "main";
+      push.autoSetupRemote = true;
     };
   };
 }
