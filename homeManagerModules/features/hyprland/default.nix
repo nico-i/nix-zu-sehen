@@ -287,7 +287,7 @@ in {
       slurp
       wl-clipboard
 
-      eww-wayland
+      eww
       swww
 
       networkmanagerapplet
