@@ -34,11 +34,11 @@
     hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { ... } @ inputs: { let
+  outputs = {...} @ inputs: let
     # lib to reduce boilerplate (credit: @vim-joyer)
     myLib = import ./myLib/default.nix { inherit inputs; };
   in
-    with myLib: {
+    with myLib; {
 
       nixosConfigurations = {
         # ===================== NixOS Configurations ===================== #        

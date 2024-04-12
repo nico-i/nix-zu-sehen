@@ -9,7 +9,7 @@
   inputs,
   outputs,
   system,
-  myLib
+  myLib,
   ...
 }: {
   imports =
@@ -28,7 +28,7 @@
     };
     
     # Register drives with LUKS encryption
-    boot.initrd.luks.devices."luks-708cbd28-b60a-4bd1-8255-e33f3c487234".device = "/dev/disk/by-uuid/708cbd28-b60a-4bd1-8255-e33f3c487234";
+    initrd.luks.devices."luks-708cbd28-b60a-4bd1-8255-e33f3c487234".device = "/dev/disk/by-uuid/708cbd28-b60a-4bd1-8255-e33f3c487234";
 
     supportedFilesystems = ["ntfs"];
     
@@ -48,11 +48,11 @@
      ];
   };
 
-  myNixos = {
+  myNixOS = {
     bundles.general-desktop.enable = true;
     bundles.users.enable = true;
 
-    sharedSettings.hyperland.enable = true;
+    sharedSettings.hyprland.enable = true;
 
     home-users = {
       "nico" = {
@@ -68,8 +68,7 @@
           ];
         };
       };
-    };
-     
+    };  
   };
 
   # Enable PolicyKit for managing permissions and authorizations
@@ -116,5 +115,5 @@
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
   xdg.portal.enable = true;
 
-  system.stateVersion = "23.11"
+  system.stateVersion = "23.11";
 }
