@@ -20,7 +20,4 @@
     steamPackages.steam-runtime
   ];
 
-  myHomeManager.impermanence.directories = [
-    ".local/share/Steam"
-  ];
 }
