@@ -50,8 +50,8 @@ in {
           gaps_in = 5;
           gaps_out = 10;
           border_size = 2;
-          "col.active_border" = "rgba(${config.colorScheme.colors.base0E}ff) rgba(${config.colorScheme.colors.base09}ff) 60deg";
-          "col.inactive_border" = "rgba(${config.colorScheme.colors.base00}ff)";
+          "col.active_border" = "rgba(${config.colorScheme.palette.base0E}ff) rgba(${config.colorScheme.palette.base09}ff) 60deg";
+          "col.inactive_border" = "rgba(${config.colorScheme.palette.base00}ff)";
 
           layout = "master";
         };
@@ -105,7 +105,7 @@ in {
         ];
 
         input = {
-          kb_layout = "us,ru,ua";
+          kb_layout = "us";
           kb_variant = "";
           kb_model = "";
           kb_options = "grp:alt_shift_toggle,caps:escape";
@@ -113,10 +113,6 @@ in {
           kb_rules = "";
 
           follow_mouse = 1;
-
-          touchpad = {
-            natural_scroll = false;
-          };
 
           repeat_rate = 40;
           repeat_delay = 250;
@@ -178,13 +174,7 @@ in {
         gestures = {
           # See https://wiki.hyprland.org/Configuring/Variables/ for more
           workspace_swipe = false;
-        };
-
-        # Example per-device config
-        # See https://wiki.hyprland.org/Configuring/Keywords/#executing for more
-        "device:logitech-g102-lightsync-gaming-mouse" = {
-          sensitivity = 0;
-        };
+   	};
 
         # Example windowrule v1
         # windowrule = float, ^(kitty)$

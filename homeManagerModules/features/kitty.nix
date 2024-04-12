@@ -14,7 +14,7 @@
     #   "kitty_mod+k" = "neighboring_window up";
     # };
     shellIntegration.enableZshIntegration = true;
-    settings = with config.colorScheme.colors; {
+    settings = with config.colorScheme.palette; {
       enable_audio_bell = "no";
 
       cursor = "#${base06}";
