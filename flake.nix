@@ -27,6 +27,13 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };  
    
+    # Wayland wallpaper tool
+    prism = {
+      url = "github:IogaMaster/prism";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     # centralized colors
     nix-colors.url = "github:misterio77/nix-colors";
     
