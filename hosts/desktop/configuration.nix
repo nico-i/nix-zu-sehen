@@ -20,17 +20,12 @@
   
   boot = {
     loader = {
-      grub = {
-        enable = true; # enable grub boot loader
-        efiSupport = true;
-        efiInstallAsRemovable = true;
-      };
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
     };
     
     # Register drives with LUKS encryption
     initrd.luks.devices."luks-708cbd28-b60a-4bd1-8255-e33f3c487234".device = "/dev/disk/by-uuid/708cbd28-b60a-4bd1-8255-e33f3c487234";
-
-    supportedFilesystems = ["ntfs"];
     
     # Parameters passed to the Linux kernel at boot time
     kernelParams = [

@@ -8,7 +8,7 @@
   programs.git.userName = "nico-i";
   programs.git.userEmail = "nico@ismaili.de";
   
-  myHomemanager = {
+  myHomeManager = {
     bundles.general.enable = true;
     bundles.desktop-full.enable = true;
     bundles.gaming.enable = true;

@@ -7,9 +7,8 @@
 }: {
   programs.firefox = {
     enable = true;
-    profiles.yurii = {
+    profiles.nico = {
       extensions = with inputs.firefox-addons.packages."x86_64-linux"; [
-        bitwarden
         ublock-origin
         sponsorblock
         darkreader
@@ -63,9 +62,4 @@
       };
     };
   };
-
-  myHomeManager.impermanence.directories = [
-    ".mozilla"
-    ".cache/mozilla"
-  ];
 }

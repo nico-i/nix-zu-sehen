@@ -34,7 +34,7 @@ in {
 
       # adding option
       extraOptions = {
-        services.xremap.enable = lib.mkEnableOption "enable xremap";
+        # services.xremap.enable = lib.mkEnableOption "enable xremap";
       };
 
       # only enabling xremap if this option is toggles
