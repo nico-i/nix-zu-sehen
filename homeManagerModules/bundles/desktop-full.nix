@@ -9,5 +9,8 @@
   myHomeManager.gimp.enable = lib.mkDefault true;
   myHomeManager.vesktop.enable = lib.mkDefault true; # discord alternative
   myHomeManager.telegram.enable = lib.mkDefault true;
-  myHomeManager.spotify.enable = lib.mkDefault true;
+
+  home.packages = with pkgs; [
+    spotify
+  ];
 }
