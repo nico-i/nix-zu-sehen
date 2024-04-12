@@ -19,9 +19,16 @@
     ++ (myLib.filesIn ./included);
   
   boot = {
-    loader.grub.enable = true;
-    loader.grub.efiSupport = true;
-    loader.grub.efiInstallAsRemovable = true;
+    loader = {
+      grub = {
+        enable = true; # enable grub boot loader
+        efiSupport = true;
+        efiInstallAsRemovable = true;
+      };
+    };
+    
+    # Register drives with LUKS encryption
+    boot.initrd.luks.devices."luks-708cbd28-b60a-4bd1-8255-e33f3c487234".device = "/dev/disk/by-uuid/708cbd28-b60a-4bd1-8255-e33f3c487234";
 
     supportedFilesystems = ["ntfs"];
     
@@ -44,8 +51,6 @@
   myNixos = {
     bundles.general-desktop.enable = true;
     bundles.users.enable = true;
-
-    virtualisation.enable = lib.mkDefault = true;
 
     sharedSettings.hyperland.enable = true;
 
@@ -74,18 +79,12 @@
   # Limit the number of boot entries displayed at startup to 5
   boot.loader.systemd-boot.configurationLimit = 5;
 
-  virtualisation.libvirtd.enable = true;
-  virtualisation.podman = {
-    enable = true;
-    dockerCompat = true;
-    defaultNetwork.settings = {
-      dns_enabled = true;
-    };
+  networking = {
+    hostName = "nixos-nico";
+    networkmanager.enable = true;
+    firewall.enable = false;
+    # wireless.enable = true # enables WLAN
   };
-
-  networking.hostName = "nixos";
-  networking.networkmanager.enable = true;
-  networking.firewall.enable = false;
 
   hardware = {
     enableAllFirmware = true;

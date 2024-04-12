@@ -41,9 +41,7 @@
     with myLib: {
 
       nixosConfigurations = {
-        # ===================== NixOS Configurations ===================== #
-        # default host is selectable with `--flake ./#default`
-        
+        # ===================== NixOS Configurations ===================== #        
         desktop = mkSystem ./hosts/desktop/configuration.nix;
       };
       
@@ -51,7 +49,6 @@
 
       homeConfigurations = {
         # ================ home-manager configurations ================ #
- 	
 	"nico@desktop" = mkHome "x86_64-linux" ./hosts/desktop/home.nix;
       };
 

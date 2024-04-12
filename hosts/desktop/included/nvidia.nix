@@ -5,6 +5,7 @@
   ...
 }: {
   hardware = {
+    opengl.enable = true;
     nvidia = {
       modesetting.enable = true;
       open = false; # disabled open-source NVIDIA drivers
@@ -16,7 +17,8 @@
   ];
   
   environment.sessionVariables = {
-    WLR_NO_HARDWARE_CURSORS = "1";
+    NIXOS_OZONE_WL = "1"; # hints electron apps to use wayland
+    WLR_NO_HARDWARE_CURSORS = "1"; # fixes invisible cursors on some machines
   };
 
   services.xserver = {
