@@ -55,7 +55,7 @@
     };
     
     # audio noise cancellation tool
-    programs.noisetorch.enable = true
+    programs.noisetorch.enable = true;
    
     services.mako = { # lightweight notification daemon for Wayland
       enable = true;
