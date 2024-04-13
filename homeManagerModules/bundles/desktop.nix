@@ -54,9 +54,7 @@
       };
     };
     
-    # audio noise cancellation tool
-    programs.noisetorch.enable = true;
-   
+    # audio noise cancellation tool   
     services.mako = { # lightweight notification daemon for Wayland
       enable = true;
       backgroundColor = "#${config.colorScheme.palette.base01}";

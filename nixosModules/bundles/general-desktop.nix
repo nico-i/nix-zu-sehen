@@ -34,6 +34,8 @@
     pulse.enable = true;
     jack.enable = true;
   };
+  # audio noise cancellation tool
+  programs.noisetorch.enable = true;
 
   fonts.packages = with pkgs; [
     (pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
