@@ -3,7 +3,6 @@ let
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
 in
 {
-  config: {
   services.greetd = {
     enable = true;
     settings = {
@@ -34,5 +33,4 @@ in
   #  fish
   #  bash
   #'';
-};
 }
