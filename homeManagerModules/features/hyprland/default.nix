@@ -208,7 +208,7 @@ in {
             "$mainMod, up, movefocus, u"
             "$mainMod, down, movefocus, d"
 
-            "$mainMod, h, movefocus, l"
+           "$mainMod, h, movefocus, l"
             "$mainMod, l, movefocus, r"
             "$mainMod, k, movefocus, u"
             "$mainMod, j, movefocus, d"
@@ -249,19 +249,6 @@ in {
           # Move/resize windows with mainMod + LMB/RMB and dragging
           "$mainMod, mouse:272, movewindow"
           "$mainMod, mouse:273, resizewindow"
-        ];
-
-        # league of legends fixes
-        windowrulev2 = [
-          "float,class:^(leagueclientux.exe)$,title:^(League of Legends)$"
-          "tile,class:^(league of legends.exe)$,title:^(League of Legends (TM) Client)$ windowrule = size 1920 1080,^(league of legends.exe)$"
-        ];
-
-        windowrule = [
-          "size 1600 900,^(leagueclientux.exe)$"
-          "center,^(leagueclientux.exe)$"
-          "center,^(league of legends.exe)$"
-          "forceinput,^(league of legends.exe)$"
         ];
 
         exec-once = [

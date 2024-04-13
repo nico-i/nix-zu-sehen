@@ -34,8 +34,8 @@
         background = "0x${base00}";
         foreground = "0x${base06}";
       };
+      draw_bold_text_with_bright_colors = false;
     };
-    draw_bold_text_with_bright_colors = false;
     font = {
       bold = {
         family = "JetBrainsMono Nerd Font Mono";

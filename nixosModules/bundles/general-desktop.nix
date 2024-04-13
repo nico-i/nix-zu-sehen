@@ -4,7 +4,7 @@
   ...
 }: {
   myNixOS.sddm.enable = lib.mkDefault true;
-  myNixOS.xremap-user.enable = lib.mkDefault true;
+  myNixOS.xremap-user.enable = lib.mkDefault true;  
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
