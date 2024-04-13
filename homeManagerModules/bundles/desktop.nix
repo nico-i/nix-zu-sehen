@@ -53,7 +53,10 @@
         options.background = "${config.colorScheme.palette.base00}";
       };
     };
-
+    
+    # audio noise cancellation tool
+    programs.noisetorch.enable = true
+   
     services.mako = { # lightweight notification daemon for Wayland
       enable = true;
       backgroundColor = "#${config.colorScheme.palette.base01}";
@@ -67,7 +70,6 @@
 
     home.packages = with pkgs; [
       feh # terminal image viewer
-      noisetorch # Virtual microphone device with noise supression for PulseAudio
       polkit
       polkit_gnome
       lxsession # session manager to auto start applications and configure things
