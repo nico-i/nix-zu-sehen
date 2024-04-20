@@ -50,7 +50,6 @@
     ];
 
     startupScript = lib.mkAfter ''
-      ${pkgs.telegram-desktop}/bin/telegram-desktop &
       ${pkgs.vesktop}/bin/vesktop &
       ${pkgs.firefox}/bin/firefox &
     '';
