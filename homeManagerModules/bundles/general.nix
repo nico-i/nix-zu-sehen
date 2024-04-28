@@ -46,6 +46,7 @@
     eza # ls replacement
     fd # find alternative
     bat # cat alternative
+    zoxide # smarter cd
     du-dust # du (disk usage)  alternative
     ripgrep # grep alternative
     neofetch # cli sys info tool
