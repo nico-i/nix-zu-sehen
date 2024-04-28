@@ -61,8 +61,6 @@
     nh # nix cli helper
   ];
 
-  programs.zoxide.enableZshIntegration = true;
-
   home.sessionVariables = {
     FLAKE = "${config.home.homeDirectory}/nix-config";
   };
