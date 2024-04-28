@@ -45,7 +45,6 @@
     lf # cli file manager
     eza # ls replacement
     fd # find alternative
-    zoxide # smarter cd command
     bat # cat alternative
     du-dust # du (disk usage)  alternative
     ripgrep # grep alternative
@@ -60,6 +59,8 @@
 
     nh # nix cli helper
   ];
+
+  programs.zoxide.enableZshIntegration = true;
 
   home.sessionVariables = {
     FLAKE = "${config.home.homeDirectory}/nix-config";
