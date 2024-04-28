@@ -22,7 +22,8 @@
   myHomeManager.nix-extra.enable = lib.mkDefault true;
   myHomeManager.bottom.enable = lib.mkDefault true; # sys monitor
   myHomeManager.nix-direnv.enable = lib.mkDefault true; # faster nix commands
-
+  myHomeManager.zoxide.enable = lib.mkDefault true; # smarter cd 
+ 
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
@@ -46,7 +47,6 @@
     eza # ls replacement
     fd # find alternative
     bat # cat alternative
-    zoxide # smarter cd
     du-dust # du (disk usage)  alternative
     ripgrep # grep alternative
     neofetch # cli sys info tool

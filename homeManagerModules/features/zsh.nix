@@ -142,9 +142,6 @@ in {
     }
 
     chpwd_functions+=(chpwdf)
-    
-    # init zoxide
-    eval "$(zoxide init zsh)"
   '';
 
   programs.zsh.envExtra = ''
