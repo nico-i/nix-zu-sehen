@@ -21,11 +21,17 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    # NUR based firefox addons
+    # Nix User Repo based firefox addons
     firefox-addons = {
       url = "gitlab:rycee/nur-expressions?dir=pkgs/firefox-addons";
       inputs.nixpkgs.follows = "nixpkgs";
     };  
+    
+    # Nix-driven partitioning
+    disko = {
+      url = "github:nix-community/disko";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
    
     # Wayland wallpaper tool
     prism = {

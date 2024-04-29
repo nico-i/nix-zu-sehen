@@ -56,6 +56,26 @@
         "type": "github"
       }
     },
+    "disko": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1714403143,
+        "narHash": "sha256-TKvYRY9b9VvMLnTV8s5HP5AByDFiEdr/a8Cj+WpEaJ8=",
+        "owner": "nix-community",
+        "repo": "disko",
+        "rev": "39de9e8cca9b83adf97318034c2001b31437038b",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-community",
+        "repo": "disko",
+        "type": "github"
+      }
+    },
     "firefox-addons": {
       "inputs": {
         "flake-utils": "flake-utils",
@@ -647,6 +667,7 @@
     },
     "root": {
       "inputs": {
+        "disko": "disko",
         "firefox-addons": "firefox-addons",
         "home-manager": "home-manager",
         "hyprland": "hyprland",

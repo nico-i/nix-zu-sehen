@@ -15,8 +15,15 @@
   imports =
     [
       ./hardware-configuration.nix
+      (import ./disko.nix { device = "/dev/sdb"; })
     ]
     ++ (myLib.filesIn ./included);
+
+  users.users."nico" = {
+    isNormalUser = true;
+    initialPassword = "1";
+    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
+  };
   
   boot = {
     loader = {
@@ -24,8 +31,30 @@
       efi.canTouchEfiVariables = true;
     };
     
-    # Register drives with LUKS encryption
-    initrd.luks.devices."luks-708cbd28-b60a-4bd1-8255-e33f3c487234".device = "/dev/disk/by-uuid/708cbd28-b60a-4bd1-8255-e33f3c487234";
+    initrd.postDeviceCommands = lib.mkAfter ''
+    mkdir /btrfs_tmp
+    mount /dev/root_vg/root /btrfs_tmp
+    if [[ -e /btrfs_tmp/root ]]; then
+        mkdir -p /btrfs_tmp/old_roots
+        timestamp=$(date --date="@$(stat -c %Y /btrfs_tmp/root)" "+%Y-%m-%-d_%H:%M:%S")
+        mv /btrfs_tmp/root "/btrfs_tmp/old_roots/$timestamp"
+    fi
+
+    delete_subvolume_recursively() {
+        IFS=$'\n'
+        for i in $(btrfs subvolume list -o "$1" | cut -f 9- -d ' '); do
+            delete_subvolume_recursively "/btrfs_tmp/$i"
+        done
+        btrfs subvolume delete "$1"
+    }
+
+    for i in $(find /btrfs_tmp/old_roots/ -maxdepth 1 -mtime +30); do
+        delete_subvolume_recursively "$i"
+    done
+
+    btrfs subvolume create /btrfs_tmp/root
+    umount /btrfs_tmp
+    '';
     
     # Parameters passed to the Linux kernel at boot time
     kernelParams = [
@@ -103,6 +132,7 @@
     flatpak.enable = true;
     udisks2.enable = true;
     printing.enable = true;
+    openssh.enable = true;
   };
 
   programs.zsh.enable = true;
