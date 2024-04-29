@@ -50,8 +50,8 @@
     ];
 
     startupScript = lib.mkAfter ''
-      ${pkgs.vesktop}/bin/vesktop &
-      ${pkgs.firefox}/bin/firefox &
+    #  ${pkgs.vesktop}/bin/vesktop &
+    #  ${pkgs.firefox}/bin/firefox &
     '';
   };
 
