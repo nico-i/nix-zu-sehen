@@ -1,7 +1,7 @@
 {pkgs}: let
   image = pkgs.fetchurl {
     url = "https://source.unsplash.com/random/2560x1440";
-    sha256 = "";
+    sha256 = "sha256-QqkzEgMnrXhQlNqaD57i84ssJw26IJIhMNc3oQnLkW8=";
   };
 in
   pkgs.stdenv.mkDerivation {
