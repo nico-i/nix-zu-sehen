@@ -19,12 +19,6 @@
       inputs.disko.nixosModules.default
     ]
     ++ (myLib.filesIn ./included);
-
-  users.users."nico" = {
-    isNormalUser = true;
-    initialPassword = "1";
-    extraGroups = [ "wheel" ]; # Enable ‘sudo’ for the user.
-  };
   
   boot = {
     loader = {
