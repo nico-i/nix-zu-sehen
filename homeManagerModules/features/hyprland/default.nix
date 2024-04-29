@@ -17,9 +17,11 @@
      systemctl --user restart xdg-desktop-portal.service &
 
      # wait a tiny bit for wallpaper
-     sleep 2
+     sleep 1
+     
+     curl https://source.unsplash.com/random/2560x1440?sharp -o ~/images/wp.jpg
 
-    ${pkgs.swww}/bin/swww img ${./../prism/wallpapers/gruvbox-mountain-village.png} &
+    ${pkgs.swww}/bin/swww img ~/images/wp.jpg &
 
     ${config.myHomeManager.startupScript}
   '';
