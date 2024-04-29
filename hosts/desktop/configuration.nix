@@ -16,6 +16,7 @@
     [
       ./hardware-configuration.nix
       (import ./disko.nix { device = "/dev/sdb"; })
+      inputs.disko.nixosModules.default
     ]
     ++ (myLib.filesIn ./included);
 
