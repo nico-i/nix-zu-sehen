@@ -18,10 +18,10 @@
 
      # wait a tiny bit for wallpaper
      sleep 1
-     
-     curl https://source.unsplash.com/random/2560x1440?sharp -o ~/images/wp.jpg
+     # get randome image from unsplash
+     curl -L -o ~/wp.jpg 'https://source.unsplash.com/random/2560x1440?sharp='     
 
-    ${pkgs.swww}/bin/swww img ~/images/wp.jpg &
+    ${pkgs.swww}/bin/swww img ~/wp.jpg &
 
     ${config.myHomeManager.startupScript}
   '';
