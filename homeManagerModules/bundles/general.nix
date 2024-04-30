@@ -73,9 +73,6 @@
   ];
 
   myHomeManager.impermanence.files = [
-    {
-      file = ".zsh_history";
-      force = true;
-    }
+    ".zsh_history"
   ];
 }
