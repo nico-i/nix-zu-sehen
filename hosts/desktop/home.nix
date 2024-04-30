@@ -14,7 +14,6 @@
     hyprland.enable = true;
     pipewire.enable = true;
     tenacity.enable = true;
-    gimp.enable = true;
 
     monitors = [
       {
@@ -51,6 +50,13 @@
     #  ${pkgs.firefox}/bin/firefox &
     '';
   };
+
+  myHomeManager.impermanence.directories = [
+    "nix-config"
+    
+    # minecraft
+    ".local/share/PrismLauncher"
+  ];
 
   colorScheme = inputs.nix-colors.colorSchemes.gruvbox-dark-medium;
 

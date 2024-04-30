@@ -38,6 +38,12 @@
     
     # Wayland based window manager
     hyprland.url = "github:hyprwm/Hyprland";
+
+    # Tool to configure dirs and files to keep on root nuke
+    impermanence.url = "github:nix-community/impermanence";
+
+    # Restroactively persist dirs configured with impermanence
+    persist-retro.url = "github:Geometer1729/persist-retro";
   };
 
   outputs = {...} @ inputs: let

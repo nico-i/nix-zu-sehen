@@ -12,4 +12,8 @@
     # heroic # native GOG, Epic and Amazon Games Launcher
     mangohud # FPS overlay
   ];
+
+  myHomeManager.impermanence.directories = [
+    ".local/share/Steam"
+  ];
 }

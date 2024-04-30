@@ -65,4 +65,14 @@
     FLAKE = "${config.home.homeDirectory}/nix-config";
   };
 
+   myHomeManager.impermanence.directories = [
+    ".local/share/nvim"
+    ".config/nvim"
+
+    ".ssh"
+  ];
+
+  myHomeManager.impermanence.files = [
+    ".zsh_history"
+  ];
 }

@@ -98,4 +98,8 @@
       gegl # command line image processing
     ];
   };
+
+  myHomeManager.impermanence.directories = [
+      ".local/state/wireplumber"
+  ];
 }

@@ -62,4 +62,9 @@
       };
     };
   };
+
+  myHomeManager.impermanence.directories = [
+    ".mozilla"
+    ".cache/mozilla"
+  ];
 }
