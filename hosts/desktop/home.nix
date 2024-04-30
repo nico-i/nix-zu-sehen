@@ -4,10 +4,7 @@
   pkgs,
   lib,
   ...
-}: {  
-  programs.git.userName = "nico-i";
-  programs.git.userEmail = "nico@ismaili.de";
-  
+}: { 
   myHomeManager = {
     bundles.general.enable = true;
     bundles.desktop-full.enable = true;
@@ -68,7 +65,6 @@
       obs-studio # broadcast studio
       wf-recorder # screen recorder
       blender # 3D modeling software
-      prismlauncher # minecraft launcher
     ];
   };
 }

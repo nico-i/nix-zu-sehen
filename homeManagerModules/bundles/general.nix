@@ -23,6 +23,7 @@
   myHomeManager.bottom.enable = lib.mkDefault true; # sys monitor
   myHomeManager.nix-direnv.enable = lib.mkDefault true; # faster nix commands
   myHomeManager.zoxide.enable = lib.mkDefault true; # smarter cd 
+  myHomeManager.git.enable = lib.mkDefault true;
  
   programs.home-manager.enable = true;
 
@@ -31,7 +32,6 @@
     nixd # nix language server
     pistol # file previewer
     file # show file types
-    git
     p7zip # 7zip
     unzip # extraction utility for .zip
     zip # .zip compressor

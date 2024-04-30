@@ -5,6 +5,7 @@
     gamemode # performance optimizer
     dxvk # enables Direct3D support for wine
     # parsec-bin
+    prismlauncher # minecraft launcher
 
     gamescope # steamOS window manager / composer
 
