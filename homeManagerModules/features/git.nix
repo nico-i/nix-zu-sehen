@@ -9,7 +9,7 @@
     extraConfig = {
       push = {
         autoSetupRemote = true;
-      }
-    }
+      };
+    };
   };
 }
