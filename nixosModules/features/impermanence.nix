@@ -60,7 +60,10 @@ in {
           ]
           ++ cfg.directories;
         files = [
-          "/etc/machine-id"
+          {
+            file = "/etc/machine-id";
+            force = true;
+          }
           {
             file = "/var/keys/secret_file";
             parentDirectory = {mode = "u=rwx,g=,o=";};
