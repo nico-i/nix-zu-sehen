@@ -9,12 +9,11 @@
  * 
  * Returns: A NixOS module object.
  */
-{ lib }:
+{ lib, helperLib }:
 	{ modulePath, customConfig, customConfigName, moduleCategoryName ? null}:
 		{pkgs, ...} @ moduleArgs: 
 		let
-			getFileName = import ../fs/getFileName.nix;
-			moduleName = getFileName modulePath;
+			moduleName = helperLib.fs.getFileName modulePath;
 			evaluatedModule =
 				if builtins.isPath modulePath
 				then import modulePath moduleArgs

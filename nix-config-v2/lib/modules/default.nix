@@ -1,5 +1,5 @@
-{ lib }:
+{ lib, helperLib }:
     {
-        injectEnableOptionIntoModule = (import ./injectEnableOptionIntoModule.nix) { inherit lib; };
-        injectEnableOptionIntoModules = (import ./injectEnableOptionIntoModules.nix) { inherit lib; };
+        injectEnableOptionIntoModule = (import ./injectEnableOptionIntoModule.nix) { inherit lib helperLib;};
+        injectEnableOptionIntoModules = (import ./injectEnableOptionIntoModules.nix) { inherit lib helperLib;};
     }
