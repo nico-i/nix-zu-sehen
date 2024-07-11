@@ -3,7 +3,7 @@
         let
             moduleCategoryName = if !(builtins.isPath modulesDirPath)
                 then throw "injectEnableOptionIntoModules: `modulesDirPath` must be a path"
-                else helperLib.fs.getFileName modulesDirPath;
+                else helperLib.fs.getFileName { path = modulesDirPath; };
 
             modulePaths = helperLib.fs.listFilesInDir { dir = modulesDirPath; };
 
