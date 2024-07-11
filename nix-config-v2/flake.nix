@@ -31,10 +31,7 @@
 			nixosConfigurations = {
 				# each config can be selected using `#<config-name>`.
 				# Example: `nixos-rebuild switch --flake ./flake.nix#tvm`
-				tvm = mkNixOSSystem { 
-						inherit helperLib;
-						nixosCfgPath = ./hosts/tvm/configuration.nix;
-					};
+				tvm = mkNixOSSystem { nixosCfgPath = ./hosts/tvm/configuration.nix; };
 			};
 			# Entrypoint for NixOS to import modules
 			nixosModules.default = ./modules/nixos;
