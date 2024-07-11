@@ -10,7 +10,7 @@
     ];
 
   nixosModulesConfig = {
-    systemModules = {
+    system = {
       boot.enable = true;
       l10n.enable = true;
       remoteAccess.enable = true;
