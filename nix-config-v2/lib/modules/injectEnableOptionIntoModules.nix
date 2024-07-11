@@ -8,10 +8,7 @@
             modules = listFilesInDir modulesDirPath;
         in
             map (modulePath: 
-                    let
-                        name = getFileName modulePath;
-                    in 
                         (injectEnableOptionIntoModule {
-                            inherit lib customConfig customConfigName moduleCategoryName;
+                            inherit modulePath lib customConfig customConfigName moduleCategoryName;
                         })
                 ) modules

@@ -16,9 +16,9 @@
 			getFileName = import ../fs/getFileName.nix;
 			moduleName = getFileName modulePath;
 			evaluatedModule =
-				if (builtins.isString modulePath) || (builtins.isPath modulePath)
+				if builtins.isPath modulePath
 				then import modulePath moduleArgs
-				else modulePath moduleArgs;
+				else throw "injectEnableOptionIntoModule: `modulePath` must be a path";
 			
 			enableOptionValue = lib.mkEnableOption "enable my ${moduleName} configuration";
 			enableOption = if builtins.isString moduleCategoryName
@@ -30,9 +30,11 @@
 
 				options = (evaluatedModule.options or {}) // enableOption;
 
-				config = (lib.mkIf customConfig.${
-					if builtins.isString moduleCategoryName
-					then "${moduleCategoryName}.${moduleName}.enable"
-					else "${moduleName}.enable"
-				} evaluatedModule.config);
+				config = (lib.mkIf 
+					(
+						if builtins.isString moduleCategoryName
+						then customConfig.${moduleCategoryName}.${moduleName}.enable
+						else customConfig.${moduleName}.enable
+					)
+				 	evaluatedModule.config);
 			}
