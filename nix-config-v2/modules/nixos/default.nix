@@ -6,7 +6,7 @@
 }: let
   cfg = config.nixosModulesConfig;
 
-  systemModules = helperLib.modules.injectEnableOptionIntoModules {}
+  systemModules = helperLib.modules.injectEnableOptionIntoModules {};
   
 in {
   imports = []
