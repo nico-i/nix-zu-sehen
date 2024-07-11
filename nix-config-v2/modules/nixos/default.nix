@@ -4,11 +4,13 @@
   helperLib,
   ...
 }: let
-  cfg = config.nixosModulesConfig;
+  cfg = if builtins.isAttr config.nixosModulesConfig
+    then config.nixosModulesConfig
+    else throw "nixosModulesConfig is not defined in the configuration";
 
   systemModules = helperLib.modules.injectEnableOptionIntoModules ({
     modulesDirPath = ./system;
-    customConfig = builtins.traceVal cfg;
+    customConfig = cfg;
     customConfigName = "nixosModulesConfig";
   });
   
