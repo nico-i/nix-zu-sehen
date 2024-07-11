@@ -22,7 +22,7 @@
 	};
 
 	outputs = {...} @ inputs: let
-	helperLib = import ./lib { inherit inputs; };
+	helperLib = (import ./lib { inherit inputs; });
 	in
 		with helperLib.build;{
 			# === NixOS ===
@@ -31,8 +31,10 @@
 			nixosConfigurations = {
 				# each config can be selected using `#<config-name>`.
 				# Example: `nixos-rebuild switch --flake ./flake.nix#tvm`
-				tvm = mkNixOSSystem { nixosCfgPath = ./hosts/tvm/configuration.nix; };
-				guivm = mkNixOSSystem { nixosCfgPath = ./hosts/guivm/configuration.nix; };
+				tvm = mkNixOSSystem { 
+						inherit helperLib;
+						nixosCfgPath = ./hosts/tvm/configuration.nix;
+					};
 			};
 			# Entrypoint for NixOS to import modules
 			nixosModules.default = ./modules/nixos;

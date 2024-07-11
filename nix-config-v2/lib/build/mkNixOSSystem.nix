@@ -2,10 +2,9 @@
 /* Create a flake's `nixosConfiguration` attribute entry based on a given NixOS `configuration.nix` */
 { inputs }: 
 let
-  helperLib = (import ../default.nix) {inherit inputs;};
   outputs = inputs.self.outputs;
 in 
-{ nixosCfgPath }:
+{ nixosCfgPath, helperLib }:
 	if !(builtins.isPath nixosCfgPath)
 	then
 		throw "mkNixOSSystem: `nixosCfgPath` must be a path"
