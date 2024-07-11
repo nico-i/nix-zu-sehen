@@ -6,15 +6,15 @@
 }: let
   cfg = config.nixosModulesConfig;
 
-  systemModules = (helperLib.modules.injectEnableOptionIntoModules {
-    modulesDirPath = ./system;
-    customConfig = cfg;
-    customConfigName = "nixosModulesConfig";
-  });
+  # systemModules = helperLib.modules.injectEnableOptionIntoModules ({
+  #   modulesDirPath = ./system;
+  #   customConfig = cfg;
+  #   customConfigName = "nixosModulesConfig";
+  # });
   
 in {
-  imports = []
-    ++ systemModules;
+  imports = [];
+    # ++ systemModules;
   
   config = { # Default nixos configurations
     nix.settings.experimental-features = ["nix-command" "flakes"]; # enable flakes and nix-command
