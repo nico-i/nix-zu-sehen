@@ -1,5 +1,5 @@
 { 
 	inputs 
 }: {
-	getSysPkgs = import ./getSysPkgs.nix { inherit inputs; }
+	getSysPkgs = (import ./getSysPkgs.nix) { inherit inputs; }
 };

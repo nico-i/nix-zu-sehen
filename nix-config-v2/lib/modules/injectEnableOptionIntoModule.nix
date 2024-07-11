@@ -36,5 +36,5 @@
 						then customConfig.${moduleCategoryName}.${moduleName}.enable
 						else customConfig.${moduleName}.enable
 					)
-				 	evaluatedModule.config);
+				 	evaluatedModule.config or {});
 			}

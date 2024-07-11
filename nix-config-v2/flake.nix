@@ -22,7 +22,7 @@
 	};
 
 	outputs = {...} @ inputs: let
-	helperLib = (import ./lib { inherit inputs; });
+	helperLib = (import ./lib) { inherit inputs; };
 	in
 		with helperLib.build;{
 			# === NixOS ===
