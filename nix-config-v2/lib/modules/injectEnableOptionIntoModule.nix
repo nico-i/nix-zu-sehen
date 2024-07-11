@@ -29,11 +29,13 @@
 
 				options = (evaluatedModule.options or {}) // enableOption;
 
-				config = (lib.mkIf 
-					(
-						if builtins.isString moduleCategoryName
-						then customConfig.${moduleCategoryName}.${moduleName}.enable
-						else customConfig.${moduleName}.enable
-					)
-				 	evaluatedModule.config or {});
+				# config = (lib.mkIf 
+				# 	(
+				# 		if builtins.isString moduleCategoryName
+				# 		then customConfig.${moduleCategoryName}.${moduleName}.enable
+				# 		else customConfig.${moduleName}.enable
+				# 	)
+				#  	evaluatedModule.config or {});
+
+				config = {}
 			}
