@@ -5,11 +5,11 @@
 This configuration is made up of two parts:
 
 1. `/hosts/` - This directory contains the configuration for each of the hosts that I want to setup. Each host has its own configuration file.
-2. `/modules/` - This directory contains all configurations of the programs I use as nix modules. The idea is to use the modules I need in each host configuration.
+2. `/modules/` - This directory contains all configurations I use as nix modules. The idea is to use the modules I need in each host configuration.
 
 ## Programs I want to install
 
-I aim to install the minimal amount of programs that I need to get my work done. Here is a list of programs that I want to install:
+I aim to use the minimal amount of programs that I need to get my work done. Here is a list of programs that I want to configure:
 
 ### Bootstrapping Programs
 
@@ -36,7 +36,7 @@ I aim to install the minimal amount of programs that I need to get my work done.
 
 ### Desktop UI
 
-Since I am setting my own desktop environment, from scratch, I want to use the following programs:
+Since I am setting up my own desktop environment, from scratch, I want to use the following programs:
 
 - [ ] [`hyprland`](https://hyprland.org/) - Wayland-based **window manager**
 - [ ] [Waybar](https://github.com/Alexays/Waybar) - Customizable Wayland-based **desktop bar**
@@ -51,10 +51,6 @@ Since I am setting my own desktop environment, from scratch, I want to use the f
 - [ ] [ungoogled-chromium](https://github.com/ungoogled-software/ungoogled-chromium) - A **Web Browser** that behaves like chrome (web-dev requirement)
 - [ ] [zathura](https://github.com/pwmt/zathura) - **PDF Viewer** with vim-like keybindings
 - [ ] [`spotify`](https://www.spotify.com/) - **Music Streaming Service**
-
-### Testing
-
-- [ ] [`nixt`](https://github.com/nix-community/nixt) - **Unit Testing** for NixOS
 
 ## Glossary
 

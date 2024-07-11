@@ -36,5 +36,7 @@
 				};
 			}
 		};
+		# audio noise cancellation tool
+		programs.noisetorch.enable = true;
 	};
 }

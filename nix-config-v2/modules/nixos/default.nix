@@ -1,20 +1,23 @@
+/* This expression defines the available options in nixosModulesConfig */
 {
-  pkgs,
-  system,
-  inputs,
   config,
   helperLib,
   ...
 }: let
-  cfg = config.customNixosConfig;
+  cfg = config.nixosModulesConfig;
 
   systemModules = helperLib.modules.injectEnableOptionIntoModules {
     modulesDirPath = ./system;
     customConfig = cfg;
-    customConfigName = "customNixosConfig";
+    customConfigName = "nixosModulesConfig";
   };
   
 in {
   imports = []
     ++ systemModules;
+  
+  config = { # Default nixos configurations
+    nix.settings.experimental-features = ["nix-command" "flakes"]; # enable flakes and nix-command
+    nixpkgs.config.allowUnfree = true; # Allow unfree repos
+  };
 }
