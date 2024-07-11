@@ -15,7 +15,7 @@ in
 			throw "mkNixOSSystem: `config` must be an attrset"
 		else
 			inputs.nixpkgs.lib.nixosSystem {
-				config.networking.hostName = hostName
+				config.networking.hostName = hostName;
 
 				# used to pass things to the NixOS configuration
 				specialArgs = {
