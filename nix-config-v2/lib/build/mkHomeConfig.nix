@@ -7,12 +7,10 @@ let
     helperLib = (import ../default.nix) {inherit inputs;};
 in 
 	{ system, homeCfgPath }: 
-		let
-			# username is based on the directory name the configuration is in
-			username = if !(builtins.isPath homeCfgPath)
-			then throw "mkHomeConfig: `homeCfgPath` must be a path"
-			else builtins.baseNameOf (builtins.dirOf homeCfgPath);
-		in
+		if !(builtins.isPath homeCfgPath)
+		then
+			throw "mkHomeConfig: `homeCfgPath` must be a path"
+		else
 			inputs.home-manager.lib.homeManagerConfiguration {
 				home = {
 					username = username;
