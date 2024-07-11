@@ -8,6 +8,7 @@
 
   systemModules = helperLib.modules.injectEnableOptionIntoModules {
     modulesDirPath = ./system;
+    customConfig = cfg;
   };
   
 in {
