@@ -73,8 +73,6 @@
     impermanence.enable = true;
     impermanence.nukeRoot.enable = true;
   };
-  # Ensure that the user's password is persisted across reboots
-  users.users.nico.hashedPasswordFile = "/persist/passwd";
 
   # Enable PolicyKit for managing permissions and authorizations
   security.polkit.enable = true;
