@@ -7,7 +7,7 @@
   cfg = config.nixosModulesConfig;
 
   systemModules = helperLib.modules.injectEnableOptionIntoModules {
-    modulesDirPath = ./system/;
+    modulesDirPath = ./system;
   };
   
 in {
