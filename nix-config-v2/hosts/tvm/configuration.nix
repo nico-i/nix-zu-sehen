@@ -9,12 +9,14 @@
       ./hardware-configuration.nix
     ];
 
-  # List packages installed in system profile. To search, run:
-  # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-  ];
+  nixosModulesConfig = {
+    systemModules = {
+      boot.enable = true;
+      l10n.enable = true;
+      remoteAccess.enable = true;
+      defaultPkgs.enable = true;
+    }
+  };
 
   system.stateVersion = "24.05"; # Do not change
 }
