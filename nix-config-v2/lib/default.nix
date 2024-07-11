@@ -7,7 +7,7 @@ in
 	{
 		build = (import ./build) { inherit inputs; };
 		nixos = (import ./nixos) { inherit inputs; };
-		fs = (import ./fs) { inherit inputs; };
+		fs = (import ./fs) { inherit inputs lib; };
 		modules = (import ./modules) {  
 				inherit helperLib; 
 				lib = inputs.nixpkgs.lib;
