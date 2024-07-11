@@ -6,7 +6,7 @@
 }: let
   cfg = config.nixosModulesConfig;
 
-  systemModules = helperLib.modules.injectEnableOptionIntoModules {
+  systemModules = builtins.traceVal helperLib.modules.injectEnableOptionIntoModules {
     modulesDirPath = ./system;
     customConfig = cfg;
     customConfigName = "nixosModulesConfig";
