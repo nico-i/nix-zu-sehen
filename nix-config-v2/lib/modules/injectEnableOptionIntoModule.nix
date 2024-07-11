@@ -13,7 +13,7 @@
 	{ modulePath, customConfig, customConfigName, moduleCategoryName ? null}:
 		{pkgs, ...} @ moduleArgs: 
 		let
-			moduleName = helperLib.fs.getFileName modulePath;
+			moduleName = helperLib.fs.getFileName { path = modulePath; };
 			evaluatedModule =
 				if builtins.isPath modulePath
 				then (import modulePath) moduleArgs
@@ -35,5 +35,5 @@
 						then customConfig.${moduleCategoryName}.${moduleName}.enable
 						else customConfig.${moduleName}.enable
 					)
-				 	evaluatedModule.config or {});
+				 	evaluatedModule.config);
 			}
