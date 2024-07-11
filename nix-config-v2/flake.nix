@@ -31,8 +31,8 @@
 			nixosConfigurations = {
 				# each config can be selected using `#<config-name>`.
 				# Example: `nixos-rebuild switch --flake ./flake.nix#tvm`
-				tvm = mkNixOSSystem ./hosts/tvm/configuration.nix;
-				guivm = mkNixOSSystem ./hosts/guivm/configuration.nix;
+				tvm = mkNixOSSystem { nixosCfgPath = ./hosts/tvm/configuration.nix; };
+				guivm = mkNixOSSystem { nixosCfgPath = ./hosts/guivm/configuration.nix; };
 			};
 			# Entrypoint for NixOS to import modules
 			nixosModules.default = ./modules/nixos;
@@ -40,7 +40,7 @@
 			# === Darwin ===
 			# darwin configurations this flake should build when running `darwin-rebuild switch`
 			darwinConfigurations = {
-				mb = mkDarwinSystem ./hosts/mb/configuration.nix;
+				mb = mkDarwinSystem { darwinCfgPath = ./hosts/mb/configuration.nix; };
 			};
 			# Entrypoint for nix-darwin to import modules
 			darwinModules.default = ./modules/darwin;
@@ -50,12 +50,12 @@
 			homeConfigurations = {
 				# each configuration here builds a home configuration based on the given configuration
 
-				"nico@tvm" = mkHomeConfig "armv6l-linux" ./hosts/tvm/users/nico/home.nix;
+				"nico@tvm" = mkHomeConfig { system = "armv6l-linux"; homeCfgPath = ./hosts/tvm/users/nico/home.nix; };
+				
+				"nico@guivm" = mkHomeConfig { system = "armv6l-linux"; homeCfgPath = ./hosts/guivm/users/nico/home.nix; };
 
-				"nico@guivm" = mkHomeConfig "armv6l-linux" ./hosts/guivm/users/nico/home.nix;
-
-				"nico@mb" = mkHomeConfig "aarch64-darwin" ./hosts/mb/users/nico/home.nix;
-				"work@mb" = mkHomeConfig "aarch64-darwin" ./hosts/mb/users/work/home.nix;
+				"nico@mb" = mkHomeConfig { system = "aarch64-darwin"; homeCfgPath = ./hosts/mb/users/nico/home.nix; };
+				"work@mb" = mkHomeConfig { system = "aarch64-darwin"; homeCfgPath = ./hosts/mb/users/work/home.nix; };
 			};
 			# Entrypoint for Home Manager to import modules
 			homeManagerModules.default = ./modules/home-manager;

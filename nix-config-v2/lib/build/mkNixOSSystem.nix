@@ -5,17 +5,16 @@ let
   helperLib = (import ../default.nix) {inherit inputs;};
   outputs = inputs.self.outputs;
 in 
-{ config }:
+{ nixosCfgPath }:
 	let	
+		cfg = import nixosCfgPath;
 		# hostname is based on the directory name the configuration is in
-		hostName = builtins.baseNameOf (builtins.dirOf config.path);
+		hostName = if !(builtins.isPath nixosCfgPath)
+		then throw "mkNixOSSystem: `nixosCfgPath` must be a path"
+		else builtins.baseNameOf (builtins.dirOf nixosCfgPath);
 	in
-		if !(builtins.isAttrs config)
-		then
-			throw "mkNixOSSystem: `config` must be an attrset"
-		else
 			inputs.nixpkgs.lib.nixosSystem {
-				config.networking.hostName = hostName;
+				cfg.networking.hostName = hostName;
 
 				# used to pass things to the NixOS configuration
 				specialArgs = {
@@ -23,7 +22,7 @@ in
 				};
 				# all modules that are necessary for building the system
 				modules = [
-					config
+					nixosCfgPath
 					outputs.nixosModules.default
 				];
 			}

@@ -6,28 +6,26 @@ let
 	outputs = inputs.self.outputs;
     helperLib = (import ../default.nix) {inherit inputs;};
 in 
-	{ system, homeConfig }: 
+	{ system, homeCfgPath }: 
 		let
 			# username is based on the directory name the configuration is in
-			username = builtins.baseNameOf (builtins.dirOf homeConfig.path);
+			username = if !(builtins.isPath homeCfgPath)
+			then throw "mkHomeConfig: `homeCfgPath` must be a path"
+			else builtins.baseNameOf (builtins.dirOf homeCfgPath);
 		in
-			if !(builtins.isAttrs homeConfig)
-			then
-				throw "mkHomeConfig: `homeConfig` must be an attrset"
-			else
-				inputs.home-manager.lib.homeManagerConfiguration {
-					home = {
-						username = username;
-						homeDirectory = "/home/${username}";
-					};
-					pkgs = helperLib.nixos.getSysPkgs system;
-					# used to pass things to the home configuration
-					extraSpecialArgs = {
-						inherit inputs helperLib outputs;
-					};
-					# all modules that are necessary for building the home folder configuration
-					modules = [
-						homeConfig
-						outputs.homeManagerModules.default
-					];
-				}
+			inputs.home-manager.lib.homeManagerConfiguration {
+				home = {
+					username = username;
+					homeDirectory = "/home/${username}";
+				};
+				pkgs = helperLib.nixos.getSysPkgs system;
+				# used to pass things to the home configuration
+				extraSpecialArgs = {
+					inherit inputs helperLib outputs;
+				};
+				# all modules that are necessary for building the home folder configuration
+				modules = [
+					homeCfgPath
+					outputs.homeManagerModules.default
+				];
+			}
