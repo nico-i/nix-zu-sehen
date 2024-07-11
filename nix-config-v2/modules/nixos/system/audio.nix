@@ -7,6 +7,7 @@
 			alsa.support32Bit = true;
 			pulse.enable = true;
 			jack.enable = true; # necessary for MIDI and audio interfaces
+			
 			# setup ultra low latency audio
 			extraConfig.pipewire."92-low-latency" = {
 				context.properties = {
@@ -15,7 +16,7 @@
 					default.clock.min-quantum = 32;
 					default.clock.max-quantum = 32;
 				};
-			}
+			};
 			# setup ultra low latency audio for any pulseaudio clients
 			extraConfig.pipewire-pulse."92-low-latency" = {
 				context.modules = [
@@ -34,7 +35,7 @@
 					node.latency = "32/48000";
 					resample.quality = 1;
 				};
-			}
+			};
 		};
 		# audio noise cancellation tool
 		programs.noisetorch.enable = true;
