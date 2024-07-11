@@ -1,12 +1,13 @@
 /* This expression defines the available options in nixosModulesConfig */
 {
   config,
+  lib,
   helperLib,
   ...
 }: let
   cfg = config.nixosModulesConfig;
 
-  systemModules = builtins.traceVal helperLib.modules.injectEnableOptionIntoModules {
+  systemModules = lib.debug.traceVal helperLib.modules.injectEnableOptionIntoModules {
     modulesDirPath = ./system;
     customConfig = cfg;
     customConfigName = "nixosModulesConfig";
