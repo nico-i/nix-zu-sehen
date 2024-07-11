@@ -9,6 +9,7 @@
   systemModules = helperLib.modules.injectEnableOptionIntoModules {
     modulesDirPath = ./system;
     customConfig = cfg;
+    customConfigName = "nixosModulesConfig";
   };
   
 in {
