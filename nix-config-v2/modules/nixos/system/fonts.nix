@@ -20,6 +20,6 @@
 					serif = ["JetBrainsMono Nerd Font"];
 				};
 			};
-		}
+		};
 	}
 }
