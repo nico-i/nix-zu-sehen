@@ -39,9 +39,9 @@
 
 			# === Darwin ===
 			# darwin configurations this flake should build when running `darwin-rebuild switch`
-				darwinConfigurations = {
+			darwinConfigurations = {
 				mb = mkDarwinSystem ./hosts/mb/configuration.nix;
-				}
+			};
 			# Entrypoint for nix-darwin to import modules
 			darwinModules.default = ./modules/darwin;
 
