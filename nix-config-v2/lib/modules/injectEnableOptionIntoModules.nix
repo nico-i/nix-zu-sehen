@@ -13,6 +13,6 @@
         in
             map (modulePath: helperLib.modules.injectEnableOptionIntoModule 
                     {
-                        inherit modulePath lib customConfig customConfigName moduleCategoryName;
+                        inherit modulePath customConfig customConfigName moduleCategoryName;
                     }
                 ) modules
