@@ -6,12 +6,6 @@ let
   outputs = inputs.self.outputs;
 in 
 { nixosCfgPath }:
-let
-	hostName = 
-		if !(builtins.isPath nixosCfgPath)
-		then throw "mkNixOSSystem: `nixosCfgPath` must be a path"
-		else builtins.baseNameOf (builtins.dirOf nixosCfgPath);
-in
 	inputs.nixpkgs.lib.nixosSystem {
 		# used to pass things to the NixOS configuration
 		specialArgs = {
@@ -21,10 +15,7 @@ in
 		modules = [
 			nixosCfgPath
 			outputs.nixosModules.default
-			({ config, ... }: {
-				# set the hostname to the name of the dir 
-				config.networking.hostName = hostName;
-			})
+			helperLib.nixos.injectConfigDirNameAsHostName { cfgPath = nixosCfgPath; }
 		];
 	}
 

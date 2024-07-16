@@ -6,19 +6,15 @@ let
   outputs = inputs.self.outputs;
 in 
 { darwinCfgPath }: 
-	if !(builtins.isPath darwinCfgPath)
-	then
-		throw "mkDarwinSystem: `darwinCfgPath` must be a path"
-	else
-		nix-darwin.lib.darwinSystem {	
-			# used to pass things to the nix-darwin configuration
-			specialArgs = {
-				inherit inputs outputs helperLib;
-			};
-			# all modules that are necessary for building the system
-			modules = [
-				darwinConfig
-				outputs.darwinModules.default
-			];
-		}
-
+	nix-darwin.lib.darwinSystem {	
+		# used to pass things to the nix-darwin configuration
+		specialArgs = {
+			inherit inputs outputs helperLib;
+		};
+		# all modules that are necessary for building the system
+		modules = [
+			darwinConfig
+			outputs.darwinModules.default
+			helperLib.nixos.injectConfigDirNameAsHostName { cfgPath = darwinCfgPath; }
+		];
+	}
