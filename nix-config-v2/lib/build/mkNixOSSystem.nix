@@ -21,10 +21,10 @@ in
 		modules = [
 			nixosCfgPath
 			outputs.nixosModules.default
-			{
-				# set the hostname to the name of the dir containing the configuration
-				networking.hostName = hostName;
-			}
+			({ config, ... }: {
+				# set the hostname to the name of the dir 
+				config.networking.hostName = hostName;
+			})
 		];
 	}
 
