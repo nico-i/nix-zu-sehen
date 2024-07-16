@@ -1,6 +1,4 @@
-{
-	inputs
-} :
+{ inputs } :
 let
 	helperLib = (import ./default.nix) { inherit inputs; };
 	lib = inputs.nixpkgs.lib;

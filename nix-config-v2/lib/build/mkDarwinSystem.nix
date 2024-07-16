@@ -15,6 +15,6 @@ in
 		modules = [
 			darwinConfig
 			outputs.darwinModules.default
-			helperLib.nixos.injectConfigDirNameAsHostName { cfgPath = darwinCfgPath; }
+			(helperLib.nixos.injectConfigDirNameAsHostName { cfgPath = darwinCfgPath; })
 		];
 	}

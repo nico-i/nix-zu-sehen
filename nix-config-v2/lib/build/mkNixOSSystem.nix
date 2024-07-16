@@ -15,7 +15,7 @@ in
 		modules = [
 			nixosCfgPath
 			outputs.nixosModules.default
-			helperLib.nixos.injectConfigDirNameAsHostName { cfgPath = nixosCfgPath; }
+			(helperLib.nixos.injectConfigDirNameAsHostName { cfgPath = nixosCfgPath; })
 		];
 	}
 
