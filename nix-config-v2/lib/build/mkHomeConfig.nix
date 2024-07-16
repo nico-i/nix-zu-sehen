@@ -1,7 +1,5 @@
 /* Create a flake's `homeManagerConfiguration` attribute entry based on a given Home Manager `home.nix` file */
-{
-	inputs
-}:
+{ inputs }:
 let
 	outputs = inputs.self.outputs;
     helperLib = (import ../default.nix) {inherit inputs;};

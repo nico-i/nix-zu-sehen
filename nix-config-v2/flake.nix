@@ -30,8 +30,8 @@
 			# see https://nixos.wiki/wiki/Flakes#Output_schema for more information
 			nixosConfigurations = {
 				# each config can be selected using `#<config-name>`.
-				# Example: `nixos-rebuild switch --flake ./flake.nix#tvm`
-				tvm = mkNixOSSystem { nixosCfgPath = ./hosts/tvm/configuration.nix; };
+				# Example: `nixos-rebuild switch --flake ./flake.nix#mbvm`
+				mbvm = mkNixOSSystem { nixosCfgPath = ./hosts/mbvm/configuration.nix; };
 			};
 			# Entrypoint for NixOS to import modules
 			nixosModules.default = ./modules/nixos;
@@ -48,10 +48,7 @@
 				# home-manager configurations this flake should build when running `home-manager switch`
 			homeConfigurations = {
 				# each configuration here builds a home configuration based on the given configuration
-
-				"nico@tvm" = mkHomeConfig { system = "armv6l-linux"; homeCfgPath = ./hosts/tvm/users/nico/home.nix; };
-				
-				"nico@guivm" = mkHomeConfig { system = "armv6l-linux"; homeCfgPath = ./hosts/guivm/users/nico/home.nix; };
+				"nico@mbvm" = mkHomeConfig { system = "armv6l-linux"; homeCfgPath = ./hosts/mbvm/users/nico/home.nix; };
 
 				"nico@mb" = mkHomeConfig { system = "aarch64-darwin"; homeCfgPath = ./hosts/mb/users/nico/home.nix; };
 				"work@mb" = mkHomeConfig { system = "aarch64-darwin"; homeCfgPath = ./hosts/mb/users/work/home.nix; };
