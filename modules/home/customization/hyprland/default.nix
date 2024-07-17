@@ -18,10 +18,11 @@
             networkmanagerapplet
         ];
 
-        home.homeModulesConfig.customization = {
+        home.customHomeConfig.customization = {
             tofi.enable = true;
             waybar.enable = true;
             eww.enable = true;
+            xremap.enable = true;
         }
 
         wayland.windowManager.hyprland = {
@@ -39,10 +40,10 @@
                         else "disable"
                         }"
                     )
-                    (config.homeModulesConfig.monitors);
+                    (config.customHomeConfig.monitors);
 
                     workspace = map (m: "${m.name},${m.workspace}")
-                        (lib.filter (m: m.enabled && m.workspace != null) config.homeModulesConfig.monitors);
+                        (lib.filter (m: m.enabled && m.workspace != null) config.customHomeConfig.monitors);
                     
                      input = {
                         kb_layout = "us";

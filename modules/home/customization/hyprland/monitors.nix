@@ -8,7 +8,7 @@ let
 	inherit (lib) mkOption types;
 in
 	{
-        options.homeModulesConfig.monitors = mkOption {
+        options.customHomeConfig.monitors = mkOption {
             type = types.listOf (types.submodule {
                 options = {
                     name = mkOption {

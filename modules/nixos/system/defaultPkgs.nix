@@ -4,7 +4,8 @@
         environment.systemPackages = with pkgs; [
             nix
             git
-            neovim
+            vim
+            neofetch
             nh # nix cli helper
         ];
     };

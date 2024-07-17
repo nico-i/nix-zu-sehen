@@ -5,6 +5,6 @@
             lutris
         ];
 
-        homeModulesConfig.gaming.steam.enable = true;
+        customHomeConfig.gaming.steam.enable = true;
     };
 }

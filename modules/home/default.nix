@@ -1,21 +1,21 @@
-/* This expression defines the available options in homeModulesConfig */
+/* This expression defines the available options in customHomeConfig */
 {
 	config,
 	helperLib,
-    lib,
+	lib,
 	...
 }:
 let
-	cfg = config.homeModulesConfig;
+	cfg = config.customHomeConfig;
 
 	homeConfigModules = map (dir: helperLib.modules.injectEnableOptionIntoModules {
 		modulesDirPath = dir;
 		customConfig = cfg;
-		customConfigName = "homeModulesConfig";
+		customConfigName = "customHomeConfig";
 	}) helperLib.fs.listDirsInDir { dir = .; };
 in 
 	{
-	imports = [] ++ homeConfigModules;
-	config = { # home-manager configuration defaults
-	};
+		imports = [] ++ homeConfigModules;
+		config = { # home-manager configuration defaults
+		};
 	}
