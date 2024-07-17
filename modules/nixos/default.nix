@@ -43,8 +43,6 @@ in
 			nix.settings.experimental-features = lib.mkDefault ["nix-command" "flakes"]; # enable flakes and nix-command
 			nixpkgs.config.allowUnfree = lib.mkDefault true; # Allow unfree repos
 
-			programs.home-manager.enable = lib.mkDefault true; # enable home-manager
-
 			customNixOSConfig = {
 				customization.stylix.enable = lib.mkDefault true;
 			};
