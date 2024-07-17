@@ -7,6 +7,10 @@
 	osConfig,
 	...
 }: {
+    imports = [
+        ./monitors.nix
+    ];
+
 	config = {
         home.packages = with pkgs; [
             # screenshot tools
