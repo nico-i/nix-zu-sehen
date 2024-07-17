@@ -1,15 +1,12 @@
 { lib, helperLib }:
     { modulesDirPath, customConfig, customConfigName}:
         let
-            moduleCategoryName = if !(builtins.isPath modulesDirPath)
-                then throw "injectEnableOptionIntoModules: `modulesDirPath` must be a path, got: '${toString modulesDirPath}'"
-                else helperLib.fs.getFileName { path = modulesDirPath; };
+            moduleCategoryName =
+                if builtins.pathExists modulesDirPath && lib.filesystem.pathIsDirectory modulesDirPath
+                then helperLib.fs.getFileName { path = modulesDirPath; }
+                else throw "injectEnableOptionIntoModules: `modulesDirPath` must be a dir path, got: '${toString modulesDirPath}'";
 
-            modulePaths = helperLib.fs.listFilesInDir { dir = modulesDirPath; };
-
-            modules = if !(builtins.isList modulePaths)
-                then throw "injectEnableOptionIntoModules: `modulesDirPath` must be a directory, got: '${toString modulesDirPath}'"
-                else modulePaths;
+            modules = helperLib.fs.listFilesInDir { dir = modulesDirPath; };
         in
             map (modulePath: helperLib.modules.injectEnableOptionIntoModule 
                     {
