@@ -17,5 +17,6 @@ in
 	{
 		imports = [] ++ lib.lists.flatten homeConfigModules;
 		config = { # home-manager configuration defaults
+			programs.home-manager.enable = true;
 		};
 	}

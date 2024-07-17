@@ -18,7 +18,9 @@ let
 	}) (helperLib.fs.listDirsInDir { dir = ./.; });
 in 
 	{
-		imports = []
+		imports = [
+				inputs.home-manager.nixosModules.home-manager
+			]
 			++ lib.lists.flatten nixosConfigModules;
 
 		options.customNixOSConfig.home-users = lib.mkOption {
