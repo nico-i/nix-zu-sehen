@@ -18,7 +18,7 @@
             networkmanagerapplet
         ];
 
-        home.customHomeConfig.customization = {
+        customHomeConfig.customization = {
             tofi.enable = true;
             waybar.enable = true;
             eww.enable = true;
