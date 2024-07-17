@@ -14,6 +14,8 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
+		xremap-flake.url = "github:xremap/nix-flake";
+
 		hyprland.url = "github:hyprwm/Hyprland";
 		disko = {
 			url = "github:nix-community/disko";
