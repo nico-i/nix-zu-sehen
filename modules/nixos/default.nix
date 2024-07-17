@@ -84,5 +84,5 @@ in
 					}
 					// extraSettings
 				) (config.customNixOSConfig.home-users);
-		}
+		};
 	}
