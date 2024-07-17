@@ -46,7 +46,10 @@ in
 			nixpkgs.config.allowUnfree = lib.mkDefault true; # Allow unfree repos
 
 			customNixOSConfig = {
-				customization.stylix.enable = lib.mkDefault true;
+				customization = {
+					stylix.enable = lib.mkDefault true;
+					hyprland.enable = lib.mkDefault true;
+				};
 				system.defaultPkgs.enable = lib.mkDefault true;
 			};
 
