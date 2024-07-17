@@ -21,7 +21,7 @@
 							then (import "${modulePath}/default.nix" moduleArgs)
 						else if lib.filesystem.pathIsFile modulePath
 							then (import modulePath moduleArgs)
-						else throw "injectEnableOptionIntoModule: `modulePath` must be a directory or file, got: '${toString modulePath}'";
+						else throw "injectEnableOptionIntoModule: `modulePath` must be a directory or file, got: '${toString modulePath}'"
 				else throw "injectEnableOptionIntoModule: `modulePath` must exist, got: '${toString modulePath}'";
 			
 			enableOptionValue = lib.mkEnableOption "enable ${moduleName} configuration";
