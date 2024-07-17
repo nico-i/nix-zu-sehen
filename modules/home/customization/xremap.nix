@@ -7,6 +7,6 @@
     config.services.xremap = {
         enable = false;
         withHypr = true;
-    }
+    };
 }
 
