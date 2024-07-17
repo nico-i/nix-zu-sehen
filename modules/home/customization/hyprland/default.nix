@@ -22,10 +22,13 @@
             networkmanagerapplet
         ];
 
-        customHomeConfig.customization = {
-            tofi.enable = true;
-            waybar.enable = true;
-            xremap.enable = true;
+        customHomeConfig = {
+            customization = {
+                tofi.enable = true;
+                waybar.enable = true;
+                xremap.enable = true;
+            };
+            dev.kitty.enable = true;
         };
 
         wayland.windowManager.hyprland = {
