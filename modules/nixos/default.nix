@@ -4,6 +4,7 @@
 	helperLib,
 	lib,
 	outputs,
+	inputs,
 	...
 }: 
 let
