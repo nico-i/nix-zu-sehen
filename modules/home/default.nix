@@ -12,7 +12,7 @@ let
 		modulesDirPath = dir;
 		customConfig = cfg;
 		customConfigName = "customHomeConfig";
-	}) helperLib.fs.listDirsInDir { dir = ./.; };
+	}) (helperLib.fs.listDirsInDir { dir = ./.; });
 in 
 	{
 		imports = [] ++ homeConfigModules;
