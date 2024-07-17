@@ -65,7 +65,7 @@ in
 					builtins.mapAttrs (name: { homeCfgPath, ... }: {...}: 
 						{
 							imports = [
-								(import user.userConfig)
+								(import homeCfgPath)
 								outputs.homeManagerModules.default
 							];
 						})
