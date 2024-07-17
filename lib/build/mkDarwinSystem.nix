@@ -13,7 +13,7 @@ in
 		};
 		# all modules that are necessary for building the system
 		modules = [
-			darwinConfig
+			darwinCfgPath
 			outputs.darwinModules.default
 			(helperLib.nixos.injectConfigDirNameAsHostName { cfgPath = darwinCfgPath; })
 		];
