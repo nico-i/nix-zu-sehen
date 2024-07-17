@@ -31,7 +31,7 @@
   customHomeConfig = {
     customization = {
       hyprland.enable = lib.mkDefault true;
-    }
+    };
   };
 
   system.stateVersion = "24.05"; # Do not change
