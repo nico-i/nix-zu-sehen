@@ -6,7 +6,7 @@ let
   outputs = inputs.self.outputs;
 in 
 { darwinCfgPath }: 
-	nix-darwin.lib.darwinSystem {	
+	inputs.nix-darwin.lib.darwinSystem {	
 		# used to pass things to the nix-darwin configuration
 		specialArgs = {
 			inherit inputs outputs helperLib;
