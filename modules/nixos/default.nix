@@ -46,7 +46,7 @@ in
 			programs.home-manager.enable = lib.mkDefault true; # enable home-manager
 
 			customNixOSConfig = {
-				stylix.enable = lib.mkDefault true;
+				customization.stylix.enable = lib.mkDefault true;
 			};
 
 			hardware = {
