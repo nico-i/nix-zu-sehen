@@ -12,7 +12,7 @@ in
 		in
 			inputs.home-manager.lib.homeManagerConfiguration {
 				
-				pkgs = helperLib.nixos.getSysPkgs system;
+				pkgs = (helperLib.nixos.getSysPkgs { inherit system; });
 				# used to pass things to the home configuration
 				extraSpecialArgs = {
 					inherit inputs helperLib outputs;
