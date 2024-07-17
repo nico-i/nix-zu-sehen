@@ -25,7 +25,6 @@
         customHomeConfig.customization = {
             tofi.enable = true;
             waybar.enable = true;
-            eww.enable = true;
             xremap.enable = true;
         };
 
