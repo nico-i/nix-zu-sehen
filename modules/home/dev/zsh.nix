@@ -1,7 +1,7 @@
 # https://www.zsh.org/
 { config, ... }:
 {
-    programs.zsh = {
-        enable = true;
+  config.programs.zsh = {
+      enable = true;
   };
 }
