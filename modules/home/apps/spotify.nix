@@ -1,6 +1,5 @@
-{ config, ... }:
-{
-    config.home.packages = with config.pkgs; [
+{ config, pkgs, ... }: {
+    config.home.packages = with pkgs; [
         spotify
     ];
 }
