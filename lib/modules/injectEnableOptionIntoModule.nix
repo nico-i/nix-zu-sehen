@@ -15,9 +15,14 @@
 		let
 			moduleName = helperLib.fs.getFileName { path = modulePath; };
 			evaluatedModule =
-				if builtins.isPath modulePath
-				then (import modulePath) moduleArgs
-				else throw "injectEnableOptionIntoModule: `modulePath` must be a path, got: '${toString modulePath}'";
+				if builtins.pathExists modulePath
+					then 
+						if lib.filesystem.pathIsDirectory modulePath
+							then (import "${modulePath}/default.nix" moduleArgs)
+						else if lib.filesystem.pathIsFile modulePath
+							then (import modulePath moduleArgs)
+						else throw "injectEnableOptionIntoModule: `modulePath` must be a directory or file, got: '${toString modulePath}'";
+				else throw "injectEnableOptionIntoModule: `modulePath` must exist, got: '${toString modulePath}'";
 			
 			enableOptionValue = lib.mkEnableOption "enable ${moduleName} configuration";
 			enableOption = if builtins.isString moduleCategoryName
