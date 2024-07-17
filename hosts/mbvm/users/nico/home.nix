@@ -18,7 +18,7 @@
 				name = "DP-3";
 				width = 3024;
 				height = 1964;
-				refreshRate = 60;
+				refreshRate = 60.0;
 			}
         ];
 	};
