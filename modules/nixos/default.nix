@@ -12,7 +12,7 @@ let
 		modulesDirPath = dir;
 		customConfig = cfg;
 		customConfigName = "customNixOSConfig";
-	}) helperLib.fs.listDirsInDir { dir = .; };
+	}) helperLib.fs.listDirsInDir { dir = ./.; };
 in 
 	{
 		imports = []
