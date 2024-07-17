@@ -3,6 +3,7 @@
 	config,
 	helperLib,
 	lib,
+	outputs,
 	...
 }: 
 let
