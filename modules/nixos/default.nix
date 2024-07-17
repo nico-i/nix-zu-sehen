@@ -81,7 +81,7 @@ in
 
 			# NixOS users configuration
 			users.users = builtins.mapAttrs (
-				name: { homeCfgPath, extraSettings }:
+				name: { homeCfgPath, extraSettings ? {} }:
 					{
 					isNormalUser = true;
 					initialPassword = "12345";

@@ -19,11 +19,6 @@
     home-users = {
       nico = {
         homeCfgPath = ./users/nico/home.nix;
-        extraSettings = {
-          extraGroups = [
-            "docker"
-          ];
-        };
       };
     };
   };
