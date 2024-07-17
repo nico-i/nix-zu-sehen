@@ -1,5 +1,5 @@
 # https://github.com/xremap/xremap
-{ config, ... }: {
+{ config, inputs, ... }: {
 	imports = [
         inputs.xremap-flake.homeManagerModules.default
     ];
