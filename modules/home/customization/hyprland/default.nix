@@ -34,6 +34,38 @@
         wayland.windowManager.hyprland = {
             enable = true;
             settings = {
+                # https://wiki.hyprland.org/Configuring/Binds/ for more
+                bind = [
+                    "$mainMod, return, exec, kitty"
+                    "$mainMod, Q, killactive,"
+                    "$mainMod SHIFT, M, exit,"
+                    "$mainMod SHIFT, F, togglefloating,"
+                    "$mainMod, F, fullscreen,"
+                    "$mainMod, G, togglegroup,"
+
+                    # vim navigation binds
+                    "$mainMod, h, movefocus, l"
+                    "$mainMod, l, movefocus, r"
+                    "$mainMod, k, movefocus, u"
+                    "$mainMod, j, movefocus, d"
+
+                    "$mainMod SHIFT, h, movewindow, l"
+                    "$mainMod SHIFT, l, movewindow, r"
+                    "$mainMod SHIFT, k, movewindow, u"
+                    "$mainMod SHIFT, j, movewindow, d"
+                ]
+                ++ map (n: "$mainMod SHIFT, ${toString n}, movetoworkspace, ${toString (
+                    if n == 0
+                    then 10
+                    else n
+                )}") [1 2 3 4 5 6 7 8 9 0]
+                ++ map (n: "$mainMod, ${toString n}, workspace, ${toString (
+                    if n == 0
+                    then 10
+                    else n
+                )}") [1 2 3 4 5 6 7 8 9 0];
+
+
                 monitor =
                     map
                     (
