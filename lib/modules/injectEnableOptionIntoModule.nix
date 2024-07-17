@@ -17,7 +17,7 @@
 			evaluatedModule =
 				if builtins.isPath modulePath
 				then (import modulePath) moduleArgs
-				else throw "injectEnableOptionIntoModule: `modulePath` must be a path";
+				else throw "injectEnableOptionIntoModule: `modulePath` must be a path, got: '${toString modulePath}'";
 			
 			enableOptionValue = lib.mkEnableOption "enable ${moduleName} configuration";
 			enableOption = if builtins.isString moduleCategoryName
