@@ -1,5 +1,9 @@
 # https://github.com/nix-community/nixvim
-{ config, pkgs, ... }: {
+{ inputs, config, pkgs, ... }: {
+    imports = [
+        inputs.nixvim.homeManagerModules.default
+    ];
+
 	config = {
         programs.nixvim = {
             enable = true;

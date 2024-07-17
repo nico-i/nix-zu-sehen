@@ -14,7 +14,7 @@
 			inputs.nixpkgs.follows = "nixpkgs";
 		};
 
-		xremap-flake.url = "github:xremap/nix-flake";
+		xremap.url = "github:xremap/nix-flake";
 
 		hyprland.url = "github:hyprwm/Hyprland";
 		disko = {
@@ -23,6 +23,11 @@
 		};
 
 		stylix.url = "github:danth/stylix";
+
+		nixvim = {
+			url = "github:nix-community/nixvim";
+			inputs.nixpkgs.follows = "nixpkgs";
+		};
 	};
 
 	outputs = {...} @ inputs: let
