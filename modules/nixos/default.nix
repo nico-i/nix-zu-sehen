@@ -19,7 +19,7 @@ let
 in 
 	{
 		imports = []
-			++ nixosConfigModules;
+			++ lib.lists.flatten nixosConfigModules;
 
 		options.customNixOSConfig.home-users = lib.mkOption {
 			type = lib.types.attrsOf (lib.types.submodule {

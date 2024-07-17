@@ -15,7 +15,7 @@ let
 	}) (helperLib.fs.listDirsInDir { dir = ./.; });
 in 
 	{
-		imports = [] ++ homeConfigModules;
+		imports = [] ++ lib.lists.flatten homeConfigModules;
 		config = { # home-manager configuration defaults
 		};
 	}
