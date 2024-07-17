@@ -5,15 +5,13 @@ let
     helperLib = (import ../default.nix) {inherit inputs;};
 in 
 	{ system, homeCfgPath }: 
-		if !(builtins.isPath homeCfgPath)
-		then
-			throw "mkHomeConfig: `homeCfgPath` must be a path"
-		else
+		let
+			username = if !(builtins.isPath homeCfgPath)
+			then throw "mkHomeConfig: `homeCfgPath` must be a path"
+			else builtins.baseNameOf (builtins.dirOf homeCfgPath);
+		in
 			inputs.home-manager.lib.homeManagerConfiguration {
-				home = {
-					username = username;
-					homeDirectory = "/home/${username}";
-				};
+				
 				pkgs = helperLib.nixos.getSysPkgs system;
 				# used to pass things to the home configuration
 				extraSpecialArgs = {
@@ -23,5 +21,11 @@ in
 				modules = [
 					homeCfgPath
 					outputs.homeManagerModules.default
+					{ config, ... }: {
+						config.home = {
+							username = username;
+							homeDirectory = "/home/${username}";
+						};
+					}
 				];
 			}
