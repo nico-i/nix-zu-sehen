@@ -8,5 +8,7 @@
             neofetch
             nh # nix cli helper
         ];
+
+        programs.zsh.enable = true;
     };
 }

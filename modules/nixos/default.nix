@@ -47,6 +47,7 @@ in
 
 			customNixOSConfig = {
 				customization.stylix.enable = lib.mkDefault true;
+				system.defaultPkgs.enable = lib.mkDefault true;
 			};
 
 			hardware = {
