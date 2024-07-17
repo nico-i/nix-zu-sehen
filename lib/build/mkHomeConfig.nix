@@ -21,11 +21,11 @@ in
 				modules = [
 					homeCfgPath
 					outputs.homeManagerModules.default
-					{ config, ... }: {
+					({ config, ... }: {
 						config.home = {
 							username = username;
 							homeDirectory = "/home/${username}";
 						};
-					}
+					})
 				];
 			}
