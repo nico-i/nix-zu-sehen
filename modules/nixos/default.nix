@@ -12,7 +12,7 @@ let
 	cfg = config.customNixOSConfig;
 
 	nixosConfigModules = map (dir: helperLib.modules.injectEnableOptionIntoModules {
-		modulesDirPath = ./${dir}/;
+		modulesDirPath = ./${dir};
 		customConfig = cfg;
 		customConfigName = "customNixOSConfig";
 	}) (helperLib.fs.listDirsInDir { dir = ./.; });

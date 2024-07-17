@@ -9,7 +9,7 @@ let
 	cfg = config.customHomeConfig;
 
 	homeConfigModules = map (dir: helperLib.modules.injectEnableOptionIntoModules {
-		modulesDirPath = ./${dir}/;
+		modulesDirPath = ./${dir};
 		customConfig = cfg;
 		customConfigName = "customHomeConfig";
 	}) (helperLib.fs.listDirsInDir { dir = ./.; });
