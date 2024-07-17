@@ -23,7 +23,7 @@
             waybar.enable = true;
             eww.enable = true;
             xremap.enable = true;
-        }
+        };
 
         wayland.windowManager.hyprland = {
             enable = true;
