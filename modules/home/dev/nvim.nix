@@ -1,5 +1,5 @@
 # https://github.com/nix-community/nixvim
-{ config, ... }: {
+{ config, pkgs, ... }: {
 	config = {
         programs.nixvim = {
             enable = true;
