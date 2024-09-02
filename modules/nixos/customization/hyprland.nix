@@ -1,7 +1,6 @@
 { ... }: {
 	config = {
         programs = {
-            kitty.enable = true;
             hyprland.enable = true;
         };
         # Optional, hint Electron apps to use Wayland:
