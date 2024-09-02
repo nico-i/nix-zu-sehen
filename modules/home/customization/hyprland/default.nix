@@ -30,13 +30,12 @@
 				xremap.enable = true;
 			};
 			dev.kitty.enable = true;
-
 		};
 
 		wayland.windowManager.hyprland = {
 			enable = true;
 
-			"$mainMod" = config.customHomeConfig.modKey;
+			"$mainMod" = config.customHomeConfig.mod;
 
 			settings = {
 				# https://wiki.hyprland.org/Configuring/Binds/ for more
