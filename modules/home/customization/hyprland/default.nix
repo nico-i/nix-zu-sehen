@@ -16,7 +16,7 @@ in
 	];
 
 	options = {
-		customHomeConfig.customization.hyprland.modKey = lib.mkOption {
+		customHomeConfig.customization.modKey = lib.mkOption {
 			type = lib.types.str;
 			default = "SUPER";
 			example = "SUPER";
@@ -48,7 +48,7 @@ in
 		wayland.windowManager.hyprland = {
 			enable = true;
 			
-			 "$mainMod" = cfg.hyprland.modKey;
+			 "$mainMod" = cfg.customization.hyprland.modKey;
 
 			settings = {
 				# https://wiki.hyprland.org/Configuring/Binds/ for more
