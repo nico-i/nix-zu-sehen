@@ -56,15 +56,15 @@
 				]
 				++ map 
                     (numberKey: 
-                        let n = if numberKey == 0 then 10 else numberKey;
+                        let
+							workSpaceIndex = if numberKey == 0 then 10 else numberKey;
                         in  
-                        [
-                            "$mainMod, ${toString numberKey}, workspace, ${toString n}"
-                            "$mainMod SHIFT, ${toString numberKey}, movetoworkspace, ${toString n}"
-                        ]
+							([
+								"$mainMod, ${toString numberKey}, workspace, ${toString workSpaceIndex}"
+								"$mainMod SHIFT, ${toString numberKey}, movetoworkspace, ${toString workSpaceIndex}"
+							])
                     )
 					[1 2 3 4 5 6 7 8 9 0];
-
 
 				monitor =
 					map
