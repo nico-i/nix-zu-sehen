@@ -11,6 +11,7 @@
     system = {
       boot.enable = true;
       l10n.enable = true;
+      displayManager.enable = true;
       remoteAccess.enable = true;
       defaultPkgs.enable = true;
     };
