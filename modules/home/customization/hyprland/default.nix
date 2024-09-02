@@ -35,7 +35,7 @@
 		wayland.windowManager.hyprland = {
 			enable = true;
 
-			"$mainMod" = config.customHomeConfig.mod;
+			"$mainMod" = "Mod4";
 
 			settings = {
 				# https://wiki.hyprland.org/Configuring/Binds/ for more
