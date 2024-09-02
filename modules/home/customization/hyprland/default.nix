@@ -34,12 +34,11 @@
 
 		wayland.windowManager.hyprland = {
 			enable = true;
-
-			"$mainMod" = "Mod4";
-
 			settings = {
+				"$mainMod" = "Mod4";
+
 				# https://wiki.hyprland.org/Configuring/Binds/ for more
-				bind = [
+				bindm = [
 					"$mainMod, return, exec, kitty"
 					"$mainMod, Q, killactive,"
 					"$mainMod SHIFT, M, exit,"
