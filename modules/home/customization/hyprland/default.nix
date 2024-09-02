@@ -7,22 +7,10 @@
 	osConfig,
 	...
 }: 
-let 
-	cfg = config.customHomeConfig;
-in
 {
 	imports = [
-		./monitors.nix
+	./monitors.nix
 	];
-
-	options = {
-		customHomeConfig.customization.hyprland.modKey = lib.mkOption {
-			type = lib.types.str;
-			default = "SUPER";
-			example = "SUPER";
-			description = "The modifier key to use for Hyprland keybinds";
-		};
-	};
 
 	config = {
 		home.packages = with pkgs; [
@@ -47,8 +35,8 @@ in
 
 		wayland.windowManager.hyprland = {
 			enable = true;
-			
-			 "$mainMod" = cfg.customization.hyprland.modKey;
+
+			"$mainMod" = customHomeConfig.customization.hyprland.modKey;
 
 			settings = {
 				# https://wiki.hyprland.org/Configuring/Binds/ for more
@@ -59,7 +47,7 @@ in
 					"$mainMod SHIFT, F, togglefloating,"
 					"$mainMod, F, fullscreen,"
 					"$mainMod, G, togglegroup,"
-					
+
 					# vim navigation binds
 					"$mainMod, h, movefocus, l"
 					"$mainMod, l, movefocus, r"
@@ -71,18 +59,18 @@ in
 					"$mainMod SHIFT, k, movewindow, u"
 					"$mainMod SHIFT, j, movewindow, d"
 				]
-				++ 	builtins.concatLists (
-						map 
-							(numberKey: 
-								let
-									workSpaceIndex = if numberKey == 0 then 10 else numberKey;
-								in  
-									[
-										"$mainMod, ${toString numberKey}, workspace, ${toString workSpaceIndex}"
-										"$mainMod SHIFT, ${toString numberKey}, movetoworkspace, ${toString workSpaceIndex}"
-									]
-							)
-							[1 2 3 4 5 6 7 8 9 0]
+				++ builtins.concatLists (
+					map 
+						(numberKey: 
+							let
+								workSpaceIndex = if numberKey == 0 then 10 else numberKey;
+							in 
+								[
+									"$mainMod, ${toString numberKey}, workspace, ${toString workSpaceIndex}"
+									"$mainMod SHIFT, ${toString numberKey}, movetoworkspace, ${toString workSpaceIndex}"
+								]
+						)
+						[1 2 3 4 5 6 7 8 9 0]
 					);
 
 				monitor =
