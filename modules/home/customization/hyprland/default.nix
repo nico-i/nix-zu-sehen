@@ -16,7 +16,7 @@ in
 	];
 
 	options = {
-		customHomeConfig.hyprland.modKey = lib.mkOption {
+		customHomeConfig.customization.hyprland.modKey = lib.mkOption {
 			type = lib.types.str;
 			default = "SUPER";
 			example = "SUPER";
@@ -42,6 +42,7 @@ in
 				xremap.enable = true;
 			};
 			dev.kitty.enable = true;
+
 		};
 
 		wayland.windowManager.hyprland = {
