@@ -16,7 +16,7 @@ in
 	];
 
 	options = {
-		customHomeConfig.customization.modKey = lib.mkOption {
+		customHomeConfig.customization.hyprland.modKey = lib.mkOption {
 			type = lib.types.str;
 			default = "SUPER";
 			example = "SUPER";
