@@ -35,27 +35,27 @@
 		wayland.windowManager.hyprland = {
 			enable = true;
 			settings = {
-				"$mainMod" = "Mod4";
+				"$mod" = "Mod4";
 
 				# https://wiki.hyprland.org/Configuring/Binds/ for more
 				bindm = [
-					"$mainMod, return, exec, kitty"
-					"$mainMod, Q, killactive,"
-					"$mainMod SHIFT, M, exit,"
-					"$mainMod SHIFT, F, togglefloating,"
-					"$mainMod, F, fullscreen,"
-					"$mainMod, G, togglegroup,"
+					"$mod, return, exec, kitty"
+					"$mod, Q, killactive,"
+					"$mod SHIFT, M, exit,"
+					"$mod SHIFT, F, togglefloating,"
+					"$mod, F, fullscreen,"
+					"$mod, G, togglegroup,"
 
 					# vim navigation binds
-					"$mainMod, h, movefocus, l"
-					"$mainMod, l, movefocus, r"
-					"$mainMod, k, movefocus, u"
-					"$mainMod, j, movefocus, d"
+					"$mod, h, movefocus, l"
+					"$mod, l, movefocus, r"
+					"$mod, k, movefocus, u"
+					"$mod, j, movefocus, d"
 
-					"$mainMod SHIFT, h, movewindow, l"
-					"$mainMod SHIFT, l, movewindow, r"
-					"$mainMod SHIFT, k, movewindow, u"
-					"$mainMod SHIFT, j, movewindow, d"
+					"$mod SHIFT, h, movewindow, l"
+					"$mod SHIFT, l, movewindow, r"
+					"$mod SHIFT, k, movewindow, u"
+					"$mod SHIFT, j, movewindow, d"
 				]
 				++ builtins.concatLists (
 					map 
@@ -64,8 +64,8 @@
 								workSpaceIndex = if numberKey == 0 then 10 else numberKey;
 							in 
 								[
-									"$mainMod, ${toString numberKey}, workspace, ${toString workSpaceIndex}"
-									"$mainMod SHIFT, ${toString numberKey}, movetoworkspace, ${toString workSpaceIndex}"
+									"$mod, ${toString numberKey}, workspace, ${toString workSpaceIndex}"
+									"$mod SHIFT, ${toString numberKey}, movetoworkspace, ${toString workSpaceIndex}"
 								]
 						)
 						[1 2 3 4 5 6 7 8 9 0]
