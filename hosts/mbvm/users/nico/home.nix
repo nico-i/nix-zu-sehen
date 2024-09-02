@@ -9,7 +9,7 @@
 
 	customHomeConfig = {
 		customization = {
-			hyprland.enable = lib.mkDefault true;
+			hyprland.enable = true;
 		};
 
         monitors = [
