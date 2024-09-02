@@ -36,23 +36,23 @@
 			settings = {
 				# https://wiki.hyprland.org/Configuring/Binds/ for more
 				bind = [
-					"$mainMod, return, exec, kitty"
-					"$mainMod, Q, killactive,"
-					"$mainMod SHIFT, M, exit,"
-					"$mainMod SHIFT, F, togglefloating,"
-					"$mainMod, F, fullscreen,"
-					"$mainMod, G, togglegroup,"
-
+					"MOD, return, exec, kitty"
+					"MOD, Q, killactive,"
+					"MOD SHIFT, M, exit,"
+					"MOD SHIFT, F, togglefloating,"
+					"MOD, F, fullscreen,"
+					"MOD, G, togglegroup,"
+					
 					# vim navigation binds
-					"$mainMod, h, movefocus, l"
-					"$mainMod, l, movefocus, r"
-					"$mainMod, k, movefocus, u"
-					"$mainMod, j, movefocus, d"
+					"MOD, h, movefocus, l"
+					"MOD, l, movefocus, r"
+					"MOD, k, movefocus, u"
+					"MOD, j, movefocus, d"
 
-					"$mainMod SHIFT, h, movewindow, l"
-					"$mainMod SHIFT, l, movewindow, r"
-					"$mainMod SHIFT, k, movewindow, u"
-					"$mainMod SHIFT, j, movewindow, d"
+					"MOD SHIFT, h, movewindow, l"
+					"MOD SHIFT, l, movewindow, r"
+					"MOD SHIFT, k, movewindow, u"
+					"MOD SHIFT, j, movewindow, d"
 				]
 				++ 	builtins.concatLists (
 						map 
@@ -61,8 +61,8 @@
 									workSpaceIndex = if numberKey == 0 then 10 else numberKey;
 								in  
 									[
-										"$mainMod, ${toString numberKey}, workspace, ${toString workSpaceIndex}"
-										"$mainMod SHIFT, ${toString numberKey}, movetoworkspace, ${toString workSpaceIndex}"
+										"MOD, ${toString numberKey}, workspace, ${toString workSpaceIndex}"
+										"MOD SHIFT, ${toString numberKey}, movetoworkspace, ${toString workSpaceIndex}"
 									]
 							)
 							[1 2 3 4 5 6 7 8 9 0]
