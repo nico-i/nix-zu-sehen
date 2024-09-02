@@ -6,10 +6,23 @@
 	inputs,
 	osConfig,
 	...
-}: {
+}: 
+let 
+	cfg = config.customHomeConfig;
+in
+{
 	imports = [
 		./monitors.nix
 	];
+
+	options = {
+		customHomeConfig.hyprland.modKey = lib.mkOption {
+			type = lib.types.str;
+			default = "SUPER";
+			example = "SUPER";
+			description = "The modifier key to use for Hyprland keybinds";
+		};
+	};
 
 	config = {
 		home.packages = with pkgs; [
@@ -33,26 +46,29 @@
 
 		wayland.windowManager.hyprland = {
 			enable = true;
+			
+			 "$mainMod" = cfg.hyprland.modKey;
+
 			settings = {
 				# https://wiki.hyprland.org/Configuring/Binds/ for more
 				bind = [
-					"MOD, return, exec, kitty"
-					"MOD, Q, killactive,"
-					"MOD SHIFT, M, exit,"
-					"MOD SHIFT, F, togglefloating,"
-					"MOD, F, fullscreen,"
-					"MOD, G, togglegroup,"
+					"$mainMod, return, exec, kitty"
+					"$mainMod, Q, killactive,"
+					"$mainMod SHIFT, M, exit,"
+					"$mainMod SHIFT, F, togglefloating,"
+					"$mainMod, F, fullscreen,"
+					"$mainMod, G, togglegroup,"
 					
 					# vim navigation binds
-					"MOD, h, movefocus, l"
-					"MOD, l, movefocus, r"
-					"MOD, k, movefocus, u"
-					"MOD, j, movefocus, d"
+					"$mainMod, h, movefocus, l"
+					"$mainMod, l, movefocus, r"
+					"$mainMod, k, movefocus, u"
+					"$mainMod, j, movefocus, d"
 
-					"MOD SHIFT, h, movewindow, l"
-					"MOD SHIFT, l, movewindow, r"
-					"MOD SHIFT, k, movewindow, u"
-					"MOD SHIFT, j, movewindow, d"
+					"$mainMod SHIFT, h, movewindow, l"
+					"$mainMod SHIFT, l, movewindow, r"
+					"$mainMod SHIFT, k, movewindow, u"
+					"$mainMod SHIFT, j, movewindow, d"
 				]
 				++ 	builtins.concatLists (
 						map 
@@ -61,8 +77,8 @@
 									workSpaceIndex = if numberKey == 0 then 10 else numberKey;
 								in  
 									[
-										"MOD, ${toString numberKey}, workspace, ${toString workSpaceIndex}"
-										"MOD SHIFT, ${toString numberKey}, movetoworkspace, ${toString workSpaceIndex}"
+										"$mainMod, ${toString numberKey}, workspace, ${toString workSpaceIndex}"
+										"$mainMod SHIFT, ${toString numberKey}, movetoworkspace, ${toString workSpaceIndex}"
 									]
 							)
 							[1 2 3 4 5 6 7 8 9 0]
