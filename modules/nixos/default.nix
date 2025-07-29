@@ -95,8 +95,10 @@ in
       udisks2.enable = true;
     };
 
-    networking.networkmanager.enable = true;
-    firewall.enable = false;
+    networking = {
+      networkmanager.enable = true;
+      firewall.enable = false;
+    };
 
     programs.zsh.enable = true;
 
