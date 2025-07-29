@@ -25,7 +25,9 @@
         screenshots.enable = true;
         clipboard.enable = true;
       };
-      dev.alacritty.enable = true;
+      cli = {
+        terminalEmulator.enable = true;
+      };
     };
 
     wayland.windowManager.hyprland = {
@@ -39,6 +41,8 @@
         bind = [
           "$mainMod, return, exec, alacritty"
           "$mainMod, \\, exec, alacritty"
+
+          "$mainMod, space, exec, tofi"
 
           "$mainMod, Q, killactive,"
           "$mainMod, W, closeactive,"

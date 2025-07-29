@@ -3,6 +3,20 @@
   imports = [ outputs.homeManagerModules.default ];
 
   customHomeConfig = {
+    apps = {
+      "3d".enable = true;
+      music.enable = true;
+      gaming.enable = true;
+      browser.enable = true;
+    };
+
+    cli = {
+      terminalEmulator.enable = true;
+      tools.enable= true;
+      editor.enable = true;
+      vcs.enable = true;
+    };
+
     ui = {
       desktop.enable = true;
     };
