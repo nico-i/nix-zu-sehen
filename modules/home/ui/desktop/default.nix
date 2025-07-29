@@ -20,7 +20,7 @@
     customHomeConfig = {
       ui = {
         launcher.enable = true;
-        homeBard.enable = true;
+        homeBar.enable = true;
         keyboardRemaps.enable = true;
         screenshots.enable = true;
         clipboard.enable = true;
