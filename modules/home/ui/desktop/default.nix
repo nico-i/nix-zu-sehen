@@ -44,8 +44,6 @@
           "$mainMod, space, exec, tofi"
 
           "$mainMod, Q, killactive,"
-          "$mainMod, W, closeactive,"
-          "$mainMod, R, reload,"
           "$mainMod, F, fullscreen,"
 
           # vim navigation binds

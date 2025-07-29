@@ -4,15 +4,15 @@
     programs = {
       hyprland.enable = true; # Wayland-based compositor https://hypr.land/
     };
-    
+
     services = {
       xserver.enable = true;
-      displayManager= {
+      displayManager = {
         sddm = {
           enable = true;
           wayland.enable = true;
         };
-      defaultSession = "hyprland";
+        defaultSession = "hyprland";
       };
     };
 
