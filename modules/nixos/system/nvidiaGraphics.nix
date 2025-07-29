@@ -8,11 +8,7 @@
   config = {
     hardware = {
       graphics.enable = true;
-      opengl = {
-        enable = true;
-        driSupport32Bit = true;
-        driSupport = true;
-      };
+      opengl.enable = true;
       nvidia.open = false; # use proprietary NVIDIA drivers
     };
 
