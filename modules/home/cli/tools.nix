@@ -7,8 +7,8 @@
       enableBashIntegration = true;
     };
     bottom = {
-      enable =
-        true; # Bottom - A terminal-based graphical activity monitor # https://github.com/ClementTsang/bottom
+      # Bottom - A terminal-based graphical activity monitor # https://github.com/ClementTsang/bottom
+      enable = true;
     };
   };
 }

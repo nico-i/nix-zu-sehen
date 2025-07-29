@@ -26,6 +26,8 @@
       settings = {
         "$mainMod" = if (osConfig.altIsSuper or false) then "ALT" else "SUPER";
 
+        master.orientation = "center"; # center master window
+
         # https://wiki.hyprland.org/Configuring/Binds/ for more
         bind = [
           "$mainMod, return, exec, alacritty"
