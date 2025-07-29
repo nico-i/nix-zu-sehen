@@ -1,9 +1,6 @@
-{
-  pkgs,
-  config,
-  ...
-}: let
-  scripts = import ./scripts.nix {inherit pkgs;};
+{ pkgs, config, ... }:
+let
+  scripts = import ./scripts.nix { inherit pkgs; };
 
   workspaces = {
     format = "{icon}";
@@ -26,7 +23,10 @@
     height = 14;
     position = "top";
 
-    modules-left = ["custom/logo" "hyprland/workspaces"];
+    modules-left = [
+      "custom/logo"
+      "hyprland/workspaces"
+    ];
     modules-right = [
       "hyprland/language"
       "network"
@@ -73,14 +73,22 @@
       };
       format = "󰥔 {:%H:%M}";
       format-alt = "󰥔 {:%A, %B %d, %Y (%R)} ";
-      tooltip-format = ''
-        <span size='9pt' font='WenQuanYi Zen Hei Mono'>{calendar}</span>'';
+      tooltip-format = ''<span size='9pt' font='WenQuanYi Zen Hei Mono'>{calendar}</span>'';
     };
 
     cpu = {
       format = "󰍛 {usage}%";
       format-alt = "{icon0}{icon1}{icon2}{icon3}";
-      format-icons = ["▁" "▂" "▃" "▄" "▅" "▆" "▇" "█"];
+      format-icons = [
+        "▁"
+        "▂"
+        "▃"
+        "▄"
+        "▅"
+        "▆"
+        "▇"
+        "█"
+      ];
       interval = 10;
     };
 
@@ -140,7 +148,11 @@
       format = "{icon}  {volume}%";
       format-icons = {
         car = " ";
-        default = ["" "" ""];
+        default = [
+          ""
+          ""
+          ""
+        ];
         hands-free = " ";
         headphone = " ";
         headset = " ";
@@ -343,13 +355,16 @@
         padding-right: 4px;
     }
   '';
-in {
+in
+{
   programs.waybar = {
     enable = true;
     package = pkgs.waybar.overrideAttrs (oldAttrs: {
-      mesonFlags = oldAttrs.mesonFlags ++ ["-Dexperimental=true"];
+      mesonFlags = oldAttrs.mesonFlags ++ [ "-Dexperimental=true" ];
     });
     style = css;
-    settings = {mainBar = mainWaybarConfig;};
+    settings = {
+      mainBar = mainWaybarConfig;
+    };
   };
 }

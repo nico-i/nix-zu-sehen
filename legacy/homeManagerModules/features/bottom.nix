@@ -1,10 +1,11 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   programs.bottom = {
     enable = true;
     settings = {
-      flags = {};
+      flags = { };
       row = [
-        {child = [{type = "cpu";}];}
+        { child = [ { type = "cpu"; } ]; }
         {
           ratio = 2;
           child = [

@@ -1,9 +1,6 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    ungoogled-chromium
-  ];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ ungoogled-chromium ];
 
-  myHomeManager.impermanence.directories = [
-    ".config/chromium"
-  ];
+  myHomeManager.impermanence.directories = [ ".config/chromium" ];
 }

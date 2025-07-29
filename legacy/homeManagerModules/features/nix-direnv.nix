@@ -1,8 +1,5 @@
+{ pkgs, lib, ... }:
 {
-  pkgs,
-  lib,
-  ...
-}: {
   programs.direnv = {
     enable = true;
     enableZshIntegration = true;
@@ -13,7 +10,5 @@
     '';
   };
 
-  myHomeManager.impermanence.directories = [
-    ".local/share/direnv/allow"
-  ];
+  myHomeManager.impermanence.directories = [ ".local/share/direnv/allow" ];
 }

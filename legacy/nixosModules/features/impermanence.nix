@@ -4,9 +4,11 @@
   inputs,
   config,
   ...
-}: let
+}:
+let
   cfg = config.myNixOS.impermanence;
-in {
+in
+{
   imports = [
     inputs.impermanence.nixosModules.impermanence
     inputs.persist-retro.nixosModules.persist-retro
@@ -23,7 +25,7 @@ in {
     };
 
     directories = lib.mkOption {
-      default = [];
+      default = [ ];
       description = ''
         directories to persist
       '';
@@ -34,17 +36,18 @@ in {
     fileSystems."/persist".neededForBoot = true;
     programs.fuse.userAllowOther = true;
 
-    environment.persistence = let
-      persistentHomes = builtins.mapAttrs (name: user: {
-        directories = config.home-manager.users."${name}".myHomeManager.impermanence.directories;
-        files = config.home-manager.users."${name}".myHomeManager.impermanence.files;
-      }) (config.myNixOS.home-users);
-    in {
-      "/persist/users".users = persistentHomes;
-      "/persist/system" = {
-        hideMounts = true;
-        directories =
-          [
+    environment.persistence =
+      let
+        persistentHomes = builtins.mapAttrs (name: user: {
+          directories = config.home-manager.users."${name}".myHomeManager.impermanence.directories;
+          files = config.home-manager.users."${name}".myHomeManager.impermanence.files;
+        }) (config.myNixOS.home-users);
+      in
+      {
+        "/persist/users".users = persistentHomes;
+        "/persist/system" = {
+          hideMounts = true;
+          directories = [
             "/etc/nixos"
             "/var/log"
             "/var/lib/bluetooth"
@@ -57,20 +60,20 @@ in {
               group = "colord";
               mode = "u=rwx,g=rx,o=";
             }
-          ]
-          ++ cfg.directories;
-        files = [
-          {
-            file = "/var/keys/secret_file";
-            parentDirectory = {mode = "u=rwx,g=,o=";};
-          }
-        ];
+          ] ++ cfg.directories;
+          files = [
+            {
+              file = "/var/keys/secret_file";
+              parentDirectory = {
+                mode = "u=rwx,g=,o=";
+              };
+            }
+          ];
+        };
       };
-    };
 
-    boot.initrd.postDeviceCommands =
-      lib.mkIf cfg.nukeRoot.enable
-      (lib.mkAfter ''
+    boot.initrd.postDeviceCommands = lib.mkIf cfg.nukeRoot.enable (
+      lib.mkAfter ''
         mkdir /btrfs_tmp
         mount /dev/${cfg.volumeGroup}/root /btrfs_tmp
         if [[ -e /btrfs_tmp/root ]]; then
@@ -93,6 +96,7 @@ in {
 
         btrfs subvolume create /btrfs_tmp/root
         umount /btrfs_tmp
-      '');
+      ''
+    );
   };
 }

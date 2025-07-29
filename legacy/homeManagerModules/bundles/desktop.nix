@@ -4,7 +4,8 @@
   inputs,
   lib,
   ...
-}: {
+}:
+{
 
   options = {
     myHomeManager.startupScript = lib.mkOption {
@@ -39,12 +40,12 @@
     services.udiskie.enable = true; # front-end that allows to manage removable media such as CDs or flash drives from userspace
 
     xdg.mimeApps.defaultApplications = {
-      "text/plain" = ["neovide.desktop"];
-      "application/pdf" = ["zathura.desktop"];
-      "image/*" = ["imv.desktop"];
-      "video/png" = ["mpv.desktop"];
-      "video/jpg" = ["mpv.desktop"];
-      "video/*" = ["mpv.desktop"];
+      "text/plain" = [ "neovide.desktop" ];
+      "application/pdf" = [ "zathura.desktop" ];
+      "image/*" = [ "imv.desktop" ];
+      "video/png" = [ "mpv.desktop" ];
+      "video/jpg" = [ "mpv.desktop" ];
+      "video/*" = [ "mpv.desktop" ];
     };
 
     programs.imv = {
@@ -53,9 +54,10 @@
         options.background = "${config.colorScheme.palette.base00}";
       };
     };
-    
+
     # audio noise cancellation tool   
-    services.mako = { # lightweight notification daemon for Wayland
+    services.mako = {
+      # lightweight notification daemon for Wayland
       enable = true;
       backgroundColor = "#${config.colorScheme.palette.base01}";
       borderColor = "#${config.colorScheme.palette.base0E}";
@@ -92,14 +94,12 @@
       # terminal emulators
       wezterm
       kitty
-      
+
       # onlyoffice-bin # leading ms-office alternative
       easyeffects # PipeWire audio plugins
       gegl # command line image processing
     ];
   };
 
-  myHomeManager.impermanence.directories = [
-      ".local/state/wireplumber"
-  ];
+  myHomeManager.impermanence.directories = [ ".local/state/wireplumber" ];
 }

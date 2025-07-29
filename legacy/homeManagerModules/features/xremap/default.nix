@@ -5,27 +5,32 @@
   myLib,
   lib,
   ...
-}: let
+}:
+let
   cfg = config;
 
   # CUSTOMZSHTOSOURCE is a work-around to source files in the same zsh instance
   # zsh -c exits after `source`
-  shell = script: ["${pkgs.writeShellScriptBin "script" script}/bin/script"];
-  makeScratchPad = {
-    name,
-    script,
-    terminal ? true,
-  }: let
-    command =
-      if terminal
-      then ''"CUSTOMZSHTOSOURCE=\"${pkgs.writeText "text" script}\" alacritty -e 'zsh'"''
-      else ''${script}'';
-  in
+  shell = script: [ "${pkgs.writeShellScriptBin "script" script}/bin/script" ];
+  makeScratchPad =
+    {
+      name,
+      script,
+      terminal ? true,
+    }:
+    let
+      command =
+        if terminal then
+          ''"CUSTOMZSHTOSOURCE=\"${pkgs.writeText "text" script}\" alacritty -e 'zsh'"''
+        else
+          ''${script}'';
+    in
     shell ''
       hyprctl workspaces | grep ${name}-scratchpad || hyprctl dispatch exec \[workspace special:${name}-scratchpad\] ${command}
       hyprctl dispatch togglespecialworkspace ${name}-scratchpad
     '';
-in {
+in
+{
   # xremap's flake does not have "enable" option, so I'm adding it myself
   imports = [
     (myLib.extendModule {
@@ -64,17 +69,14 @@ in {
               launch = shell "${pkgs.grim}/bin/grim -l 0 - | ${pkgs.wl-clipboard}/bin/wl-copy";
             };
             super-SHIFT-E = {
-              launch =
-                shell "${pkgs.wl-clipboard}/bin/wl-paste | ${pkgs.swappy}/bin/swappy -f -";
+              launch = shell "${pkgs.wl-clipboard}/bin/wl-paste | ${pkgs.swappy}/bin/swappy -f -";
             };
             super-SHIFT-S = {
-              launch =
-                shell
-                ''
-                  ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - \
-                  | ${pkgs.imagemagick}/bin/convert - -shave 1x1 PNG:- \
-                  | ${pkgs.wl-clipboard}/bin/wl-copy
-                '';
+              launch = shell ''
+                ${pkgs.grim}/bin/grim -g "$(${pkgs.slurp}/bin/slurp)" - \
+                | ${pkgs.imagemagick}/bin/convert - -shave 1x1 PNG:- \
+                | ${pkgs.wl-clipboard}/bin/wl-copy
+              '';
             };
             # SUPER + DO actions
             super-d = {
@@ -132,7 +134,9 @@ in {
                     '';
                   };
                 };
-                f = {launch = ["firefox"];};
+                f = {
+                  launch = [ "firefox" ];
+                };
                 s = {
                   launch = makeScratchPad {
                     name = "pavucontrol";
@@ -140,19 +144,21 @@ in {
                     terminal = false;
                   };
                 };
-                t = {launch = ["telegram-desktop"];};
+                t = {
+                  launch = [ "telegram-desktop" ];
+                };
               };
             };
-            super-u = {set_mode = "alternative";};
+            super-u = {
+              set_mode = "alternative";
+            };
             super-v = {
-              launch =
-                shell
-                ''
-                  # toggles microphone on/off
-                  amixer sset Capture toggle && amixer get Capture | grep "\[off\]" \
-                      && (notify-send "MIC switched OFF") \
-                      || (notify-send "MIC switched ON")
-                '';
+              launch = shell ''
+                # toggles microphone on/off
+                amixer sset Capture toggle && amixer get Capture | grep "\[off\]" \
+                    && (notify-send "MIC switched OFF") \
+                    || (notify-send "MIC switched ON")
+              '';
             };
           };
         }
@@ -161,15 +167,24 @@ in {
           mode = "alternative";
           name = "alternative keybindings";
           remap = {
-            super-i = {launch = ["notify-send" "IT IS MODE2"];};
-            super-u = {set_mode = "default";};
+            super-i = {
+              launch = [
+                "notify-send"
+                "IT IS MODE2"
+              ];
+            };
+            super-u = {
+              set_mode = "default";
+            };
           };
         }
       ];
       modmap = [
         {
           name = "main remaps";
-          remap = {CapsLock = "esc";};
+          remap = {
+            CapsLock = "esc";
+          };
         }
         # {
         #   application = { only = [ "org.wezfurlong.wezterm" "Alacritty" ]; };

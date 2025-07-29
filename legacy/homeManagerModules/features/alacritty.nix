@@ -1,8 +1,5 @@
+{ pkgs, config, ... }:
 {
-  pkgs,
-  config,
-  ...
-}: {
   programs.alacritty.enable = true;
   programs.alacritty.settings = {
     colors = with config.colorScheme.palette; {
@@ -55,6 +52,8 @@
       };
       size = 15;
     };
-    window = {opacity = 0.95;};
+    window = {
+      opacity = 0.95;
+    };
   };
 }

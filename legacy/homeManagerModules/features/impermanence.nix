@@ -4,22 +4,22 @@
   inputs,
   config,
   ...
-}: let
+}:
+let
   cfg = config.myHomeManager.impermanence;
-in {
-  imports = [
-    inputs.impermanence.nixosModules.home-manager.impermanence
-  ];
+in
+{
+  imports = [ inputs.impermanence.nixosModules.home-manager.impermanence ];
 
   options.myHomeManager.impermanence = {
     directories = lib.mkOption {
-      default = [];
+      default = [ ];
       description = ''
         directories to persist
       '';
     };
     files = lib.mkOption {
-      default = [];
+      default = [ ];
       description = ''
         directories to persist
       '';
@@ -28,17 +28,15 @@ in {
 
   config = {
     home.persistence."/persist/home" = {
-      directories =
-        [
-          "downloads"
-          ".gnupg"
-          ".ssh"
-          ".config/dconf"
-          ".local/share/keyrings"
-          ".local/share/direnv"
-          "nix-config"
-        ]
-        ++ cfg.directories;
+      directories = [
+        "downloads"
+        ".gnupg"
+        ".ssh"
+        ".config/dconf"
+        ".local/share/keyrings"
+        ".local/share/direnv"
+        "nix-config"
+      ] ++ cfg.directories;
       allowOther = true;
     };
   };

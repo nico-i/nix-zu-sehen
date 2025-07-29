@@ -4,10 +4,9 @@
   lib,
   inputs,
   ...
-}: {
-  imports = [
-    inputs.nix-colors.homeManagerModules.default
-  ];
+}:
+{
+  imports = [ inputs.nix-colors.homeManagerModules.default ];
 
   nixpkgs = {
     config = {
@@ -22,9 +21,9 @@
   myHomeManager.nix-extra.enable = lib.mkDefault true;
   myHomeManager.bottom.enable = lib.mkDefault true; # sys monitor
   myHomeManager.nix-direnv.enable = lib.mkDefault true; # faster nix commands
-  myHomeManager.zoxide.enable = lib.mkDefault true; # smarter cd 
+  myHomeManager.zoxide.enable = lib.mkDefault true; # smarter cd
   myHomeManager.git.enable = lib.mkDefault true;
- 
+
   programs.home-manager.enable = true;
 
   home.packages = with pkgs; [
@@ -65,14 +64,12 @@
     FLAKE = "${config.home.homeDirectory}/nix-config";
   };
 
-   myHomeManager.impermanence.directories = [
+  myHomeManager.impermanence.directories = [
     ".local/share/nvim"
     ".config/nvim"
 
     ".ssh"
   ];
 
-  myHomeManager.impermanence.files = [
-    ".zsh_history"
-  ];
+  myHomeManager.impermanence.files = [ ".zsh_history" ];
 }

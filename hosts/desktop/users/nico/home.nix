@@ -12,7 +12,7 @@
 
     cli = {
       terminalEmulator.enable = true;
-      tools.enable= true;
+      tools.enable = true;
       editor.enable = true;
       vcs.enable = true;
     };

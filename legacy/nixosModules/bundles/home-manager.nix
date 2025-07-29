@@ -6,9 +6,11 @@
   myLib,
   pkgs,
   ...
-}: let
+}:
+let
   cfg = config.myNixOS;
-in {
+in
+{
   options.myNixOS = {
     userName = lib.mkOption {
       default = "nico";
@@ -25,7 +27,7 @@ in {
     };
 
     userNixosSettings = lib.mkOption {
-      default = {};
+      default = { };
       description = ''
         NixOS user settings
       '';
@@ -37,7 +39,7 @@ in {
 
     programs.hyprland.enable = cfg.sharedSettings.hyprland.enable;
 
-   services.displayManager = lib.mkIf cfg.sharedSettings.hyprland.enable {
+    services.displayManager = lib.mkIf cfg.sharedSettings.hyprland.enable {
       defaultSession = "hyprland";
     };
 
@@ -51,23 +53,27 @@ in {
         outputs = inputs.self.outputs;
       };
       users = {
-        ${cfg.userName} = {...}: {
-          imports = [
-            (import cfg.userConfig)
-            outputs.homeManagerModules.default
-          ];
-        };
+        ${cfg.userName} =
+          { ... }:
+          {
+            imports = [
+              (import cfg.userConfig)
+              outputs.homeManagerModules.default
+            ];
+          };
       };
     };
 
-    users.users.${cfg.userName} =
-      {
-        isNormalUser = true;
-        initialPassword = "12345";
-        description = cfg.userName;
-        shell = pkgs.zsh;
-        extraGroups = ["libvirtd" "networkmanager" "wheel"];
-      }
-      // cfg.userNixosSettings;
+    users.users.${cfg.userName} = {
+      isNormalUser = true;
+      initialPassword = "12345";
+      description = cfg.userName;
+      shell = pkgs.zsh;
+      extraGroups = [
+        "libvirtd"
+        "networkmanager"
+        "wheel"
+      ];
+    } // cfg.userNixosSettings;
   };
 }

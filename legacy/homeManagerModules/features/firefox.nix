@@ -4,7 +4,8 @@
   config,
   lib,
   ...
-}: {
+}:
+{
   programs.firefox = {
     enable = true;
     profiles.nico = {
@@ -39,7 +40,7 @@
             }
           ];
           icon = "${pkgs.nixos-icons}/share/icons/hicolor/scalable/apps/nix-snowflake.svg";
-          definedAliases = ["@n"];
+          definedAliases = [ "@n" ];
         };
       };
 

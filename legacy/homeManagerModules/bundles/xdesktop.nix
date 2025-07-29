@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     xclip # Clipboard utility for the command line
     sxhkd # Simple X hotkey daemon

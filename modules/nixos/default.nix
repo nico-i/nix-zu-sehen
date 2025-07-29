@@ -98,10 +98,13 @@ in
 
     networking = {
       networkmanager.enable = true;
-      firewall.enable = false;
+      firewall.enable = true;
     };
 
     programs.zsh.enable = true;
+
+    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    xdg.portal.enable = true;
 
     # default home-manager configuration
     home-manager = {
@@ -137,7 +140,9 @@ in
       {
         isNormalUser = true;
         initialPassword = "12345";
+        group = "users";
         description = "";
+        createHome = true;
         shell = pkgs.zsh;
         extraGroups = [
           "libvirtd"
@@ -147,5 +152,26 @@ in
       }
       // extraSettings
     ) (config.customNixOSConfig.home-users);
+  };
+
+  services.greetd = {
+    # Minimal TUI login
+    enable = true;
+    settings = {
+      default_session = {
+        command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --remember-session --cmd Hyprland";
+        user = "greeter";
+      };
+    };
+    serviceConfig = {
+      Type = "idle";
+      StandardInput = "tty";
+      StandardOutput = "tty";
+      StandardError = "journal"; # Without this errors will spam on screen
+      # Without these bootlogs will spam on screen
+      TTYReset = true;
+      TTYVHangup = true;
+      TTYVTDisallocate = true;
+    };
   };
 }

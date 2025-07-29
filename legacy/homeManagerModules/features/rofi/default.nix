@@ -1,8 +1,5 @@
+{ pkgs, config, ... }:
 {
-  pkgs,
-  config,
-  ...
-}: {
   # xdg.configFile."rofi/config.rasi".source = ./config.rasi;
 
   xdg.configFile."rofi/config.rasi".text = with config.colorScheme.palette; ''
@@ -337,7 +334,7 @@
     }
   '';
 
-  home.packages = with pkgs; [rofi-wayland];
+  home.packages = with pkgs; [ rofi-wayland ];
 
   # programs.rofi = {
   #   enable = true;

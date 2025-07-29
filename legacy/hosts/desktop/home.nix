@@ -1,10 +1,11 @@
-{ 
+{
   inputs,
   outputs,
   pkgs,
   lib,
   ...
-}: { 
+}:
+{
   myHomeManager = {
     bundles.general.enable = true;
     bundles.desktop-full.enable = true;
@@ -46,14 +47,14 @@
     ];
 
     startupScript = lib.mkAfter ''
-    #  ${pkgs.vesktop}/bin/vesktop &
-    #  ${pkgs.firefox}/bin/firefox &
+      #  ${pkgs.vesktop}/bin/vesktop &
+      #  ${pkgs.firefox}/bin/firefox &
     '';
   };
 
   myHomeManager.impermanence.directories = [
     "nix-config"
-    
+
     # minecraft
     ".local/share/PrismLauncher"
   ];

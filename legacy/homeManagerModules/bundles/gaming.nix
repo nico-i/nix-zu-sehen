@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   home.packages = with pkgs; [
     lutris # video game compatibility platform
     protonup-ng # enable windows steam games for linux
@@ -13,7 +14,5 @@
     mangohud # FPS overlay
   ];
 
-  myHomeManager.impermanence.directories = [
-    ".local/share/Steam"
-  ];
+  myHomeManager.impermanence.directories = [ ".local/share/Steam" ];
 }

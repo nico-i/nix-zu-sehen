@@ -1,8 +1,5 @@
-{
-  pkgs,
-  inputs,
-  ...
-}: let
+{ pkgs, inputs, ... }:
+let
   nxs = pkgs.writeShellScriptBin "nxs" ''
     fmt_packages=""
     extra_packages="$extra_packages"
@@ -36,10 +33,9 @@
   nxr = pkgs.writeShellScriptBin "nxr" ''
     nix run --impure github:nixos/nixpkgs/${inputs.nixpkgs.rev}#$@
   '';
-in {
-  imports = [
-    inputs.nix-index-database.hmModules.nix-index
-  ];
+in
+{
+  imports = [ inputs.nix-index-database.hmModules.nix-index ];
 
   home.packages = with pkgs; [
     nxd

@@ -1,9 +1,6 @@
-{pkgs, ...}: {
-  home.packages = with pkgs; [
-    vesktop
-  ];
+{ pkgs, ... }:
+{
+  home.packages = with pkgs; [ vesktop ];
 
-  myHomeManager.impermanence.directories = [
-    ".config/vesktop"
-  ];
+  myHomeManager.impermanence.directories = [ ".config/vesktop" ];
 }

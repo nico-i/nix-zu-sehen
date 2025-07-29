@@ -1,10 +1,7 @@
+{ pkgs, lib, ... }:
 {
-  pkgs,
-  lib,
-  ...
-}: {
   myNixOS.sddm.enable = lib.mkDefault true;
-  myNixOS.xremap-user.enable = lib.mkDefault true;  
+  myNixOS.xremap-user.enable = lib.mkDefault true;
 
   # Set your time zone.
   time.timeZone = "Europe/Berlin";
@@ -38,7 +35,13 @@
   programs.noisetorch.enable = true;
 
   fonts.packages = with pkgs; [
-    (pkgs.nerdfonts.override {fonts = ["JetBrainsMono" "Iosevka" "FiraCode"];})
+    (pkgs.nerdfonts.override {
+      fonts = [
+        "JetBrainsMono"
+        "Iosevka"
+        "FiraCode"
+      ];
+    })
     cm_unicode
     corefonts
   ];
@@ -46,9 +49,9 @@
   fonts.enableDefaultPackages = true;
   fonts.fontconfig = {
     defaultFonts = {
-      monospace = ["JetBrainsMono Nerd Font Mono"];
-      sansSerif = ["JetBrainsMono Nerd Font"];
-      serif = ["JetBrainsMono Nerd Font"];
+      monospace = [ "JetBrainsMono Nerd Font Mono" ];
+      sansSerif = [ "JetBrainsMono Nerd Font" ];
+      serif = [ "JetBrainsMono Nerd Font" ];
     };
   };
 

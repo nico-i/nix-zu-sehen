@@ -5,8 +5,8 @@
       packages = with pkgs; [
         (nerdfonts.override {
           fonts = [
-            "JetBrainsMono"
-            "Iosevka"
+            # "JetBrainsMono"
+            # "Iosevka"
             "FiraCode"
           ];
         })
@@ -18,7 +18,7 @@
 
       fontconfig = {
         defaultFonts = {
-          monospace = [ "JetBrainsMono Nerd Font Mono" ];
+          monospace = [ "FiraCode" ];
           sansSerif = [ "JetBrainsMono Nerd Font" ];
           serif = [ "JetBrainsMono Nerd Font" ];
         };

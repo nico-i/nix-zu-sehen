@@ -3,8 +3,7 @@
   inputs,
   config,
   ...
-}: {
-  myHomeManager.impermanence.directories = [
-    ".local/share/TelegramDesktop"
-  ];
+}:
+{
+  myHomeManager.impermanence.directories = [ ".local/share/TelegramDesktop" ];
 }
