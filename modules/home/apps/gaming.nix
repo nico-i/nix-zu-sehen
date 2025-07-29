@@ -1,5 +1,9 @@
-{ config, ... }: {
+{ config, ... }:
+{
   config = {
-    home.packages = with config.pkgs; [ lutris steam ];
+    home.packages = with config.pkgs; [
+      lutris
+      steam
+    ];
   };
 }

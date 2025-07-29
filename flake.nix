@@ -1,6 +1,5 @@
 {
-  description =
-    "Nico's nix configuration flake defining all dependencies and outputs necessary for a NixOS system";
+  description = "Nico's nix configuration flake defining all dependencies and outputs necessary for a NixOS system";
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -31,9 +30,13 @@
     };
   };
 
-  outputs = { ... }@inputs:
-    let helperLib = (import ./lib) { inherit inputs; };
-    in with helperLib.build; {
+  outputs =
+    { ... }@inputs:
+    let
+      helperLib = (import ./lib) { inherit inputs; };
+    in
+    with helperLib.build;
+    {
       # === NixOS ===
       # NixOS configurations this flake should build when running `nixos-rebuild switch`
       # see https://nixos.wiki/wiki/Flakes#Output_schema for more information

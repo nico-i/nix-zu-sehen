@@ -1,4 +1,5 @@
-{ config, ... }: {
+{ config, ... }:
+{
   config.programs = {
     zoxide = {
       # A smarter cd command https://github.com/ajeetdsouza/zoxide

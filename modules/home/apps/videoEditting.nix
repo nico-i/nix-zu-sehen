@@ -1,1 +1,4 @@
-{ config, pkgs, ... }: { config.home.packages = with pkgs; [ obs-studio ]; }
+{ config, pkgs, ... }:
+{
+  config.home.packages = with pkgs; [ obs-studio ];
+}

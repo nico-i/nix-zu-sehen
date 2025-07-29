@@ -1,1 +1,4 @@
-{ config, pkgs, ... }: { config.home.packages = with pkgs; [ blender ]; }
+{ config, pkgs, ... }:
+{
+  config.home.packages = with pkgs; [ blender ];
+}

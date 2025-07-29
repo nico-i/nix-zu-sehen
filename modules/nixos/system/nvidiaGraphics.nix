@@ -1,4 +1,10 @@
-{ pkgs, config, inputs, ... }: {
+{
+  pkgs,
+  config,
+  inputs,
+  ...
+}:
+{
   config = {
     hardware = {
       graphics.enable = true;
@@ -12,10 +18,9 @@
 
     services.xserver.videoDrivers = [ "nvidia" ];
 
-    environment.systemPackages = with pkgs;
-      [
-        pciutils # provides lspci command to list PCI devices https://github.com/pciutils/pciutils
-      ];
+    environment.systemPackages = with pkgs; [
+      pciutils # provides lspci command to list PCI devices https://github.com/pciutils/pciutils
+    ];
 
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1"; # hints electron apps to use wayland

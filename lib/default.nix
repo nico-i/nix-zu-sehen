@@ -2,7 +2,8 @@
 let
   helperLib = (import ./default.nix) { inherit inputs; };
   lib = inputs.nixpkgs.lib;
-in {
+in
+{
   build = (import ./build) { inherit inputs; };
   nixos = (import ./nixos) { inherit inputs; };
   fs = (import ./fs) { inherit inputs lib; };

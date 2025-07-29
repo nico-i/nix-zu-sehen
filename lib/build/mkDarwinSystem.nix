@@ -3,10 +3,13 @@
 let
   helperLib = (import ../default.nix) { inherit inputs; };
   outputs = inputs.self.outputs;
-in { darwinCfgPath }:
+in
+{ darwinCfgPath }:
 inputs.nix-darwin.lib.darwinSystem {
   # used to pass things to the nix-darwin configuration
-  specialArgs = { inherit inputs outputs helperLib; };
+  specialArgs = {
+    inherit inputs outputs helperLib;
+  };
   # all modules that are necessary for building the system
   modules = [
     darwinCfgPath

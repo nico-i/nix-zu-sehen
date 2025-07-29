@@ -1,10 +1,14 @@
-{ outputs, lib, ... }: {
+{ outputs, lib, ... }:
+{
   imports = [ outputs.homeManagerModules.default ];
 
   customHomeConfig = {
-    ui = { desktop.enable = true; };
+    ui = {
+      desktop.enable = true;
+    };
 
-    monitors = [{
+    monitors = [
+      {
         # Gigabyte M27Q
         name = "DP-3";
         width = 2560;
@@ -30,7 +34,8 @@
         refreshRate = 59.96;
         x = 4480;
         y = 0;
-      }];
+      }
+    ];
   };
 
   home.stateVersion = "24.05"; # Do not change

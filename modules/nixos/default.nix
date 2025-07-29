@@ -1,43 +1,60 @@
 # This expression defines the available options in customNixOSConfig
-{ config, helperLib, lib, outputs, inputs, pkgs, ... }:
+{
+  config,
+  helperLib,
+  lib,
+  outputs,
+  inputs,
+  pkgs,
+  ...
+}:
 let
   cfg = config.customNixOSConfig;
 
-  nixosConfigModules = map (dir:
+  nixosConfigModules = map (
+    dir:
     helperLib.modules.injectEnableOptionIntoModules {
       modulesDirPath = ./${dir};
       customConfig = cfg;
       customConfigName = "customNixOSConfig";
-    }) (helperLib.fs.listDirsInDir { dir = ./.; });
-in {
-  imports = [ inputs.home-manager.nixosModules.home-manager ]
-    ++ lib.lists.flatten nixosConfigModules;
+    }
+  ) (helperLib.fs.listDirsInDir { dir = ./.; });
+in
+{
+  imports = [ inputs.home-manager.nixosModules.home-manager ] ++ lib.lists.flatten nixosConfigModules;
 
   options.customNixOSConfig.home-users = lib.mkOption {
-    type = lib.types.attrsOf (lib.types.submodule {
-      options = {
-        homeCfgPath = lib.mkOption {
-          description = "Path to the home-manager configuration file";
-          type = lib.types.path;
-          example = "../users/nico/home.nix";
+    type = lib.types.attrsOf (
+      lib.types.submodule {
+        options = {
+          homeCfgPath = lib.mkOption {
+            description = "Path to the home-manager configuration file";
+            type = lib.types.path;
+            example = "../users/nico/home.nix";
+          };
+          extraSettings = lib.mkOption {
+            default = { };
+            description = "Identical to the options for users.users";
+            example = "{}";
+          };
         };
-        extraSettings = lib.mkOption {
-          default = { };
-          description = "Identical to the options for users.users";
-          example = "{}";
-        };
-      };
-    });
+      }
+    );
     default = { };
   };
 
-  config = { # NixOS configuration defaults
-    nix.settings.experimental-features =
-      lib.mkDefault [ "nix-command" "flakes" ]; # enable flakes and nix-command
+  config = {
+    # NixOS configuration defaults
+    nix.settings.experimental-features = lib.mkDefault [
+      "nix-command"
+      "flakes"
+    ]; # enable flakes and nix-command
     nixpkgs.config.allowUnfree = lib.mkDefault true; # Allow unfree repos
 
     customNixOSConfig = {
-      ui = { theming.enable = lib.mkDefault true; };
+      ui = {
+        theming.enable = lib.mkDefault true;
+      };
     };
 
     i18n = {
@@ -57,7 +74,9 @@ in {
 
     time.timeZone = "Europe/Vienna";
 
-    hardware = { enableAllFirmware = true; };
+    hardware = {
+      enableAllFirmware = true;
+    };
 
     # Enable PolicyKit for managing permissions and authorizations
     security.polkit.enable = true;
@@ -92,22 +111,38 @@ in {
         outputs = inputs.self.outputs;
       };
 
-      users = builtins.mapAttrs (name:
+      users = builtins.mapAttrs (
+        name:
         { homeCfgPath, ... }:
-        { ... }: {
-          imports = [ (import homeCfgPath) outputs.homeManagerModules.default ];
-        }) (config.customNixOSConfig.home-users);
+        { ... }:
+        {
+          imports = [
+            (import homeCfgPath)
+            outputs.homeManagerModules.default
+          ];
+        }
+      ) (config.customNixOSConfig.home-users);
     };
 
     # NixOS users configuration
-    users.users = builtins.mapAttrs (name:
-      { homeCfgPath, extraSettings ? { } }:
+    users.users = builtins.mapAttrs (
+      name:
+      {
+        homeCfgPath,
+        extraSettings ? { },
+      }:
       {
         isNormalUser = true;
         initialPassword = "12345";
         description = "";
         shell = pkgs.zsh;
-        extraGroups = [ "libvirtd" "networkmanager" "wheel" ];
-      } // extraSettings) (config.customNixOSConfig.home-users);
+        extraGroups = [
+          "libvirtd"
+          "networkmanager"
+          "wheel"
+        ];
+      }
+      // extraSettings
+    ) (config.customNixOSConfig.home-users);
   };
 }

@@ -8,8 +8,13 @@
 # ```
 { cfgPath }:
 let
-  hostName = if !(builtins.isPath cfgPath) then
-    throw "injectConfigDirNameAsHostName: `cfgPath` must be a path"
-  else
-    builtins.baseNameOf (builtins.dirOf cfgPath);
-in { config, ... }: { config.networking.hostName = hostName; }
+  hostName =
+    if !(builtins.isPath cfgPath) then
+      throw "injectConfigDirNameAsHostName: `cfgPath` must be a path"
+    else
+      builtins.baseNameOf (builtins.dirOf cfgPath);
+in
+{ config, ... }:
+{
+  config.networking.hostName = hostName;
+}

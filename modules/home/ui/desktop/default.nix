@@ -1,14 +1,21 @@
-{ pkgs, config, lib, inputs, osConfig, ... }: {
+{
+  pkgs,
+  config,
+  lib,
+  inputs,
+  osConfig,
+  ...
+}:
+{
   imports = [
     ./_monitors.nix # necessary to import here in order to add monitors Option to customHomeConfig
   ];
 
   config = {
-    home.packages = with pkgs;
-      [
-        # network manager tray icon
-        networkmanagerapplet
-      ];
+    home.packages = with pkgs; [
+      # network manager tray icon
+      networkmanagerapplet
+    ];
 
     customHomeConfig = {
       ui = {
@@ -50,19 +57,18 @@
           "$mainMod SHIFT, j, movewindow, d"
         ];
 
-        monitor = map (m:
+        monitor = map (
+          m:
           let
-            resolution = "${toString m.width}x${toString m.height}@${
-                toString m.refreshRate
-              }";
+            resolution = "${toString m.width}x${toString m.height}@${toString m.refreshRate}";
             position = "${toString m.x}x${toString m.y}";
-          in "${m.name},${
-            if m.enabled then "${resolution},${position},1" else "disable"
-          }") (config.customHomeConfig.monitors);
+          in
+          "${m.name},${if m.enabled then "${resolution},${position},1" else "disable"}"
+        ) (config.customHomeConfig.monitors);
 
-        workspace = map (m: "${m.name},${m.workspace}")
-          (lib.filter (m: m.enabled && m.workspace != null)
-            config.customHomeConfig.monitors);
+        workspace = map (m: "${m.name},${m.workspace}") (
+          lib.filter (m: m.enabled && m.workspace != null) config.customHomeConfig.monitors
+        );
 
         input = {
           kb_layout = "us";

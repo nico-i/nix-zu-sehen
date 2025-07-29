@@ -1,7 +1,15 @@
-{ pkgs ? (import ./nixpkgs.nix) { } }: {
+{
+  pkgs ? (import ./nixpkgs.nix) { },
+}:
+{
   default = pkgs.mkShell {
     NIX_CONFIG = "experimental-features = nix-command flakes";
-    nativeBuildInputs = with pkgs; [ nix home-manager git nh nixfmt-rfc-style ];
+    nativeBuildInputs = with pkgs; [
+      nix
+      home-manager
+      git
+      nh
+      nixfmt-rfc-style
+    ];
   };
 }
-

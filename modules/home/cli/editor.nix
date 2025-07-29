@@ -1,4 +1,10 @@
-{ inputs, config, pkgs, ... }: {
+{
+  inputs,
+  config,
+  pkgs,
+  ...
+}:
+{
   imports = [ inputs.nixvim.homeManagerModules.default ];
 
   config = {
@@ -7,9 +13,8 @@
       enable = true;
     };
 
-    home.packages = with pkgs;
-      [
-        nil # nix language server
-      ];
+    home.packages = with pkgs; [
+      nil # nix language server
+    ];
   };
 }
