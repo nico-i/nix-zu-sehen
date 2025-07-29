@@ -24,7 +24,7 @@
         "quiet"
         # log info level messages from udev
         "udev.log_level=info"
-      ] ++ (if config.customNixOSConfig.nvidia.enable then [
+      ] ++ (if config.customNixOSConfig.system.nvidia.enable then [
         "nvidia_drm.fbdev=1" # Enable framebuffer device support for Nvidia DRM
         "nvidia_drm.modeset=1" # Enable kernel mode setting for Nvidia DRM
       ] else
