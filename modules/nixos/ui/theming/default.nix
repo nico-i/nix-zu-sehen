@@ -5,7 +5,7 @@
       packages = with pkgs; [
         (nerdfonts.override {
           fonts = [
-            # "JetBrainsMono"
+            "JetBrainsMono"
             # "Iosevka"
             "FiraCode"
           ];
@@ -36,13 +36,16 @@
 
       fonts = {
         monospace = {
-          package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
-          name = "FiraCode";
+          package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
+          name = "JetBrainsMono";
         };
 
         serif = config.stylix.fonts.monospace;
 
-        sansSerif = config.stylix.fonts.monospace;
+        sansSerif = {
+          package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
+          name = "FiraCode";
+        };
       };
     };
   };
