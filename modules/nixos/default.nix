@@ -76,6 +76,7 @@ in
 
     hardware = {
       enableAllFirmware = true;
+      hardware.graphics.enable32Bit = true
     };
 
     # Enable PolicyKit for managing permissions and authorizations

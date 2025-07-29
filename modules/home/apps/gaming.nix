@@ -1,7 +1,7 @@
-{ config, ... }:
+{ config, useUserPackages, ... }:
 {
   config = {
-    home.packages = with config.programs; [
+    home.packages = with pkgs; [
       lutris
       steam
     ];
