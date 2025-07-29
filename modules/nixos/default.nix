@@ -58,8 +58,9 @@ in
     };
 
     i18n = {
-      defaultLocale = "de_AT.UTF-8";
+      defaultLocale = "en_US.UTF-8";
       extraLocaleSettings = {
+        LANG = "en_US.UTF-8";
         LC_ADDRESS = "de_AT.UTF-8";
         LC_IDENTIFICATION = "de_AT.UTF-8";
         LC_MEASUREMENT = "de_AT.UTF-8";
