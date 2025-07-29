@@ -8,12 +8,6 @@
     settings = {
       # Set the font used in tofi
       font = "monospace";
-      # Set the size of the font
-      fontSize = 12;
-      # Set the color scheme for tofi
-      colorScheme = "default";
-      # Set the maximum number of results displayed
-      maxResults = 10;
     };
   };
 }
