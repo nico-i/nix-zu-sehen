@@ -1,4 +1,4 @@
-{ config, ... }:
+{ lib, config, ... }:
 {
   config.programs.tofi = {
     # window switcher, application launcher and dmenu replacement
@@ -7,7 +7,7 @@
     # See https://github.com/philj56/tofi/blob/master/doc/config for a full list of options.
     settings = {
       # Set the font used in tofi
-      font = "monospace";
+      font = lib.mkForce "monospace";
     };
   };
 }
