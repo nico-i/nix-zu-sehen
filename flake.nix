@@ -51,7 +51,7 @@
       #   mb = mkDarwinSystem { darwinCfgPath = ./hosts/mb/configuration.nix; };
       # };
       # Entrypoint for nix-darwin to import modules
-      darwinModules.default = ./modules/darwin;
+      # darwinModules.default = ./modules/darwin;
 
       # === Home Manager ===
       # home-manager configurations this flake should build when running `home-manager switch`
