@@ -89,6 +89,7 @@ in
       git
       vim
       neofetch
+      lsof
       nh # nix cli helper
     ];
 
