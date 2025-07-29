@@ -38,7 +38,6 @@ in {
 
     customNixOSConfig = {
       ui = { theming.enable = lib.mkDefault true; };
-      system.defaultPkgs.enable = lib.mkDefault true;
     };
 
     i18n = {
