@@ -6,7 +6,6 @@
     system = {
       amdCpu.enable = true;
       audio.enable = true;
-      bluetooth.enable = true;
       boot.enable = true;
       gaming.enable = true;
       nvidiaGraphics.enable = true;
