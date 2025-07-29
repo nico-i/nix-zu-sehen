@@ -9,7 +9,7 @@
       bluetooth.enable = true;
       boot.enable = true;
       gaming.enable = true;
-      nvidia.enable = true;
+      nvidiaGraphics.enable = true;
       printing.enable = true;
       remoteAccess.enable = true;
       wine.enable = true;

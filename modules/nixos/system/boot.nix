@@ -1,5 +1,4 @@
-{ config, ... }:
-{
+{ config, ... }: {
   config = {
     # Use the systemd-boot EFI boot loader.
     boot = {
@@ -25,9 +24,11 @@
         "quiet"
         # log info level messages from udev
         "udev.log_level=info"
+      ] ++ (if config.customNixOSConfig.system.nvidiaGraphics.enable then [
         "nvidia_drm.fbdev=1" # Enable framebuffer device support for Nvidia DRM
         "nvidia_drm.modeset=1" # Enable kernel mode setting for Nvidia DRM
-      ];
+      ] else
+        [ ]);
     };
   };
 }
