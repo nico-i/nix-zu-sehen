@@ -21,7 +21,6 @@
       ui = {
         launcher.enable = true;
         homeBar.enable = true;
-        keyboardRemaps.enable = true;
         screenshots.enable = true;
         clipboard.enable = true;
       };
