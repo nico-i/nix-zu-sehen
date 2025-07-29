@@ -4,8 +4,15 @@
     programs = {
       hyprland.enable = true; # Wayland-based compositor https://hypr.land/
     };
+    services.xserver.enable = true;
 
-    
+    services.displayManager = {
+      sddm = {
+        enable = true;
+        wayland.enable = true;
+      };
+      defaultSession = "hyprland";
+    };
 
     environment.sessionVariables = {
       NIXOS_OZONE_WL = "1"; # hints electron apps to use wayland
