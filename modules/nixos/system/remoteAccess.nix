@@ -1,6 +1,6 @@
 { ... }: {
-	config = {
-		# Enable the OpenSSH daemon.
-		services.openssh.enable = true;
-	};
+  config = {
+    # Enable the OpenSSH daemon.
+    services.openssh.enable = true;
+  };
 }

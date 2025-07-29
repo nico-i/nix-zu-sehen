@@ -1,11 +1,5 @@
-{
-  lib,
-  ...
-}: {
-  imports =
-    [
-      ./hardware-configuration.nix
-    ];
+{ lib, ... }: {
+  imports = [ ./hardware-configuration.nix ];
 
   customNixOSConfig = {
     system = {
@@ -14,13 +8,9 @@
       remoteAccess.enable = true;
       defaultPkgs.enable = true;
     };
-    customization.stylix.enable = true;
+    ui.stylix.enable = true;
 
-    home-users = {
-      nico = {
-        homeCfgPath = ./users/nico/home.nix;
-      };
-    };
+    home-users = { nico = { homeCfgPath = ./users/nico/home.nix; }; };
   };
 
   system.stateVersion = "24.05"; # Do not change

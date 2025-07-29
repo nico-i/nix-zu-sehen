@@ -18,18 +18,18 @@ I aim to use the minimal amount of programs that I need to get my work done. Her
 
 ### Shell Programs
 
-- [ ] [`zsh`](https://www.zsh.org/) - **interactive Shell**
-- [ ] [`bash`](https://www.gnu.org/software/bash/) - **Scripting Shell**
+- [x] [`zsh`](https://www.zsh.org/) - **interactive Shell**
+- [x] [`bash`](https://www.gnu.org/software/bash/) - **Scripting Shell**
 - [ ] [`kitty`](https://sw.kovidgoyal.net/kitty/) - **Terminal Emulator**
 - [ ] [`fzf`](https://github.com/junegunn/fzf) - **Fuzzy Finder**
   - A fuzzy finder allows you to search for files and directories without typing the full name
-- [ ] [`zoxide`](https://github.com/ajeetdsouza/zoxide) - **Directory Navigation**
+- [x] [`zoxide`](https://github.com/ajeetdsouza/zoxide) - **Directory Navigation**
   - `cd` command that learns your habits
   - supports `fzf` integration
 - [ ] [`mc`](https://midnight-commander.org/) - Midnight Commander **File Manager**
-- [ ] [`bottom`](https://github.com/ClementTsang/bottom) - **System Monitor**
-- [ ] [`nixvim`](https://github.com/nix-community/nixvim) - **IDE**: NeoVim with Nix modules config support
-- [ ] [`git`](https://git-scm.com/) - **Version Control System**
+- [x] [`bottom`](https://github.com/ClementTsang/bottom) - **System Monitor**
+- [x] [`nixvim`](https://github.com/nix-community/nixvim) - **IDE**: NeoVim with Nix modules config support
+- [x] [`git`](https://git-scm.com/) - **Version Control System**
 - [ ] [`mpv`](https://mpv.io/) - terminal-based **video Player**
 - [ ] [`imv`](https://sr.ht/~exec64/imv/) - terminal-based **image Viewer**
 - [ ] [`ripdrag`](https://github.com/nik012003/ripdrag) - drag and drop files to and from the terminal
@@ -38,9 +38,8 @@ I aim to use the minimal amount of programs that I need to get my work done. Her
 
 Since I am setting up my own desktop environment, from scratch, I want to use the following programs:
 
-- [ ] [`hyprland`](https://hyprland.org/) - Wayland-based **window manager**
-- [ ] [Waybar](https://github.com/Alexays/Waybar) - Customizable Wayland-based **desktop bar**
-- [ ] [rofi](https://github.com/davatorium/rofi) - **Application Launcher**
+- [x] [`hyprland`](https://hyprland.org/) - Wayland-based **window manager**
+- [x] [Waybar](https://github.com/Alexays/Waybar) - Customizable Wayland-based **desktop bar**
 
 ### Audio
 
@@ -48,9 +47,9 @@ Since I am setting up my own desktop environment, from scratch, I want to use th
 
 ### GUI Applications
 
-- [ ] [ungoogled-chromium](https://github.com/ungoogled-software/ungoogled-chromium) - A **Web Browser** that behaves like chrome (web-dev requirement)
-- [ ] [zathura](https://github.com/pwmt/zathura) - **PDF Viewer** with vim-like keybindings
-- [ ] [`spotify`](https://www.spotify.com/) - **Music Streaming Service**
+- [x] [ungoogled-chromium](https://github.com/ungoogled-software/ungoogled-chromium) - A **Web Browser** that behaves like chrome (web-dev requirement)
+- [x] [zathura](https://github.com/pwmt/zathura) - **PDF Viewer** with vim-like keybindings
+- [x] [`spotify`](https://www.spotify.com/) - **Music Streaming Service**
 
 ## Glossary
 

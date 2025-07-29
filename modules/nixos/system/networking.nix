@@ -1,5 +1,1 @@
-{ ... }: {
-	config = {
-		networking.networkmanager.enable = true;
-	};
-}
+{ ... }: { config = { networking.networkmanager.enable = true; }; }

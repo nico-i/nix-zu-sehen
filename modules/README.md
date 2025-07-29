@@ -12,7 +12,7 @@ Each directory contains a `default.nix` injects the contained custom modules (wi
 .
 └── modules/
     ├── nixos/ # Consumer directory
-    │   ├── customization/ # Domain directory
+    │   ├── ui/ # Domain directory
     │   │   ├── hyprland # Custom module
     │   │   └── [...]
     │   └── [...]
@@ -20,11 +20,11 @@ Each directory contains a `default.nix` injects the contained custom modules (wi
 ```
 
 - all domains which custom modules have been setup for are located in the root of each consumer directory
-  - *Example: all custom modules relating to customizing the entire NixOS system are located in `./nixos/customization`*
-- the domain directory e. g. `customization` contains all custom modules and configurations for that domain
-  - *Example: the custom Hyprland configuration is located in `./nixos/customization/hyprland`*
+  - *Example: all custom modules relating to customizing the entire NixOS system are located in `./nixos/ui`*
+- the domain directory e. g. `ui` contains all custom modules and configurations for that domain
+  - *Example: the custom Hyprland configuration is located in `./nixos/ui/hyprland`*
 - Custom modules can be toggled by configuring the `customNiXOSConfig` attribute in your `configuration.nix` file
-  - *Example: The Hyprland configuration can be toggled by configuring `customNixOSConfig.customization.hyprland.enable`*
+  - *Example: The Hyprland configuration can be toggled by configuring `customNixOSConfig.ui.hyprland.enable`*
 
 ## Usage Example
 
@@ -41,7 +41,7 @@ Add a `customNixOSConfig` attribute to your `configuration.nix` file:
     ];
 
   customNixOSConfig = {
-    customization = {
+    ui = {
       # Enable `hyprland` configuration + the pkg itself
         hyprland.enable = true;
     };

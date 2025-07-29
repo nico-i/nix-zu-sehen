@@ -1,5 +1,1 @@
-{ config, ... }: {
-	config = {
-        hardware.bluetooth.enable = true;
-	};
-}
+{ config, ... }: { config = { hardware.bluetooth.enable = true; }; }

@@ -1,16 +1,9 @@
 # https://git-scm.com/
-{
-  config,
-  ...
-}: {
+{ config, ... }: {
   config.programs.git = {
     enable = true;
     userName = "Nico Ismaili";
     userEmail = "nico@ismaili.de";
-    extraConfig = {
-      push = {
-        autoSetupRemote = true;
-      };
-    };
+    extraConfig = { push = { autoSetupRemote = true; }; };
   };
 }
