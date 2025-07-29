@@ -40,16 +40,16 @@
       nixosConfigurations = {
         # each config can be selected using `#<config-name>`.
         # Example: `nixos-rebuild switch --flake ./flake.nix#mbvm`
-        mbvm = mkNixOSSystem { nixosCfgPath = ./hosts/mbvm/configuration.nix; };
+        desktop = mkNixOSSystem { nixosCfgPath = ./hosts/desktop/configuration.nix; };
       };
       # Entrypoint for NixOS to import modules
       nixosModules.default = ./modules/nixos;
 
       # === Darwin ===
       # darwin configurations this flake should build when running `darwin-rebuild switch`
-      darwinConfigurations = {
-        mb = mkDarwinSystem { darwinCfgPath = ./hosts/mb/configuration.nix; };
-      };
+      # darwinConfigurations = {
+      #   mb = mkDarwinSystem { darwinCfgPath = ./hosts/mb/configuration.nix; };
+      # };
       # Entrypoint for nix-darwin to import modules
       darwinModules.default = ./modules/darwin;
 
@@ -57,18 +57,9 @@
       # home-manager configurations this flake should build when running `home-manager switch`
       homeConfigurations = {
         # each configuration here builds a home configuration based on the given configuration
-        "nico@mbvm" = mkHomeConfig {
+        "nico@desktop" = mkHomeConfig {
           system = "armv6l-linux";
-          homeCfgPath = ./hosts/mbvm/users/nico/home.nix;
-        };
-
-        "nico@mb" = mkHomeConfig {
-          system = "aarch64-darwin";
-          homeCfgPath = ./hosts/mb/users/nico/home.nix;
-        };
-        "work@mb" = mkHomeConfig {
-          system = "aarch64-darwin";
-          homeCfgPath = ./hosts/mb/users/work/home.nix;
+          homeCfgPath = ./hosts/desktop/users/nico/home.nix;
         };
       };
       # Entrypoint for Home Manager to import modules
