@@ -12,8 +12,6 @@
   ];
 
   config = {
-    services.displayManager.defaultSession = "hyprland";
-
     home.packages = with pkgs; [
       # network manager tray icon
       networkmanagerapplet

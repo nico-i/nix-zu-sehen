@@ -19,8 +19,8 @@
       fontconfig = {
         defaultFonts = {
           monospace = [ "FiraCode" ];
-          sansSerif = [ "JetBrainsMono Nerd Font" ];
-          serif = [ "JetBrainsMono Nerd Font" ];
+          sansSerif = [ "FiraCode" ];
+          serif = [ "FiraCode" ];
         };
       };
     };
