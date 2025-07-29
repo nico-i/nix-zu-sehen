@@ -18,9 +18,9 @@
 
       fontconfig = {
         defaultFonts = {
-          monospace = [ "FiraCode" ];
-          sansSerif = [ "FiraCode" ];
-          serif = [ "FiraCode" ];
+          monospace = [ "JetBrainsMono" ];
+          sansSerif = [ "JetBrainsMono" ];
+          serif = [ "JetBrainsMono" ];
         };
       };
     };
@@ -33,20 +33,6 @@
       base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
       polarity = "dark";
       image = ./wp.png;
-
-      fonts = {
-        monospace = {
-          package = pkgs.nerdfonts.override { fonts = [ "JetBrainsMono" ]; };
-          name = "JetBrainsMono";
-        };
-
-        serif = config.stylix.fonts.monospace;
-
-        sansSerif = {
-          package = pkgs.nerdfonts.override { fonts = [ "FiraCode" ]; };
-          name = "FiraCode";
-        };
-      };
     };
   };
 }
