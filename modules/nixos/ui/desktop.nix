@@ -1,7 +1,17 @@
 { pkgs, ... }:
 {
+  option.customHomeConfig.startupScript = lib.mkOption {
+    default = "";
+    description = ''
+      Startup script
+    '';
+  };
+
   config = {
     programs.hyprland.enable = true; # Wayland-based compositor https://hypr.land/
+
+    xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    xdg.portal.enable = true;
 
     environment = {
       systemPackages = with pkgs; [

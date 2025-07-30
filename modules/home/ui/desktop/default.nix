@@ -6,6 +6,18 @@
   osConfig,
   ...
 }:
+let
+  startScript = pkgs.writeShellScriptBin "start" ''
+     ${pkgs.networkmanagerapplet}/bin/nm-applet --indicator &
+
+     hyprctl setcursor Bibata-Modern-Ice 16 &
+
+     systemctl --user import-environment PATH &
+     systemctl --user restart xdg-desktop-portal.service &
+
+    ${config.customHomeConfig.startupScript}
+  '';
+in
 {
   imports = [
     ./_monitors.nix # necessary to import here in order to add monitors Option to customHomeConfig
@@ -31,12 +43,74 @@
       };
     };
 
+    services.mako = {
+      # lightweight notification daemon for Wayland
+      enable = true;
+      defaultTimeout = 10000;
+    };
+
     wayland.windowManager.hyprland = {
       enable = true;
       settings = {
+        env = [
+          "HYPRCURSOR_THEME,rose-pine-hyprcursor"
+          "HYPRCURSOR_SIZE,24"
+        ];
+
+        exec-once = [
+          "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+          "${pkgs.bash}/bin/bash ${startScript}/bin/start"
+          "waybar"
+        ];
+
         "$mainMod" = if (osConfig.altIsSuper or false) then "ALT" else "SUPER";
 
-        master.orientation = "center"; # center master window
+        dwindle = {
+          # See https://wiki.hyprland.org/Configuring/Dwindle-Layout/ for more
+          pseudotile = true; # master switch for pseudotiling. Enabling is bound to mainMod + P in the keybinds section below
+          preserve_split = true; # you probably want this
+        };
+
+        master = {
+          # See https://wiki.hyprland.org/Configuring/Master-Layout/ for more
+          new_is_master = true;
+          orientation = "center"; # center master window
+        };
+
+        gestures = {
+          # See https://wiki.hyprland.org/Configuring/Variables/ for more
+          workspace_swipe = false;
+        };
+
+        decoration = {
+          # See https://wiki.hyprland.org/Configuring/Variables/ for more
+
+          rounding = 5;
+
+          drop_shadow = true;
+          shadow_range = 30;
+          shadow_render_power = 3;
+          "col.shadow" = "rgba(1a1a1aee)";
+        };
+
+        animations = {
+          enabled = true;
+
+          # Some default animations, see https://wiki.hyprland.org/Configuring/Animations/ for more
+
+          bezier = "myBezier, 0.25, 0.9, 0.1, 1.02";
+
+          animation = [
+            "windows, 1, 7, myBezier"
+            "windowsOut, 1, 7, default, popin 80%"
+            "border, 1, 10, default"
+            "borderangle, 1, 8, default"
+            "fade, 1, 7, default"
+            # "workspaces, 1, 3, default, slidevert"
+            # "workspaces, 1, 3, myBezier, slidefadevert"
+            "workspaces, 1, 3, myBezier, fade"
+          ];
+        };
 
         # https://wiki.hyprland.org/Configuring/Binds/ for more
         bind = [
@@ -59,6 +133,24 @@
           "$mainMod SHIFT, l, movewindow, r"
           "$mainMod SHIFT, k, movewindow, u"
           "$mainMod SHIFT, j, movewindow, d"
+        ];
+
+        binde = [
+          "$mainMod SHIFT, h, moveactive, -20 0"
+          "$mainMod SHIFT, l, moveactive, 20 0"
+          "$mainMod SHIFT, k, moveactive, 0 -20"
+          "$mainMod SHIFT, j, moveactive, 0 20"
+
+          "$mainMod CTRL, l, resizeactive, 30 0"
+          "$mainMod CTRL, h, resizeactive, -30 0"
+          "$mainMod CTRL, k, resizeactive, 0 -10"
+          "$mainMod CTRL, j, resizeactive, 0 10"
+        ];
+
+        bindm = [
+          # Move/resize windows with mainMod + LMB/RMB and dragging
+          "$mainMod, mouse:272, movewindow"
+          "$mainMod, mouse:273, resizewindow"
         ];
 
         monitor = map (

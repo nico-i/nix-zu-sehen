@@ -3,9 +3,11 @@
   config = {
     fonts = {
       packages = with pkgs; [
-        nerd-fonts.geist-mono
-        cm_unicode
-        corefonts
+        inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default # Rose Pine Hyprland cursor theme "https://github.com/ndom91/rose-pine-hyprcursor"
+        nerd-fonts.geist-mono # Geist Mono font
+        nwg-look # Theme manager for Wayland
+        cm_unicode # Unicode support
+        corefonts # Microsoft core fonts
       ];
 
       enableDefaultPackages = true;
@@ -31,7 +33,7 @@
       fonts = {
         monospace = {
           package = pkgs.nerd-fonts.geist-mono;
-          name = "Geist Mono";
+          name = "GeistMono";
         };
         serif = config.stylix.fonts.sansSerif;
         sansSerif = config.stylix.fonts.monospace;

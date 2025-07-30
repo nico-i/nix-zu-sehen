@@ -126,11 +126,6 @@ in
 
     programs.zsh.enable = true;
 
-    xdg.portal.extraPortals = [
-      pkgs.xdg-desktop-portal-hyprland
-    ];
-    xdg.portal.enable = true;
-
     # default home-manager configuration
     home-manager = {
       useGlobalPkgs = true;
