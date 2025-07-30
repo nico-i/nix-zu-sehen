@@ -14,21 +14,22 @@
       raopOpenFirewall = true; # opens UDP ports 6001-6002 for AirPlay
 
       extraConfig = {
-        "10-airplay" = {
-          "context.modules" = [
-            {
-              name = "libpipewire-module-raop-discover";
-
-              # increase the buffer size if you get dropouts/glitches
-              # args = {
-              #   "raop.latency.ms" = 500;
-              # };
-            }
-          ];
-        };
-        # setup ultra low latency audio
         pipewire = {
+          "10-airplay" = {
+            # setup AirPlay audio
+            "context.modules" = [
+              {
+                name = "libpipewire-module-raop-discover";
+
+                # increase the buffer size if you get dropouts/glitches
+                # args = {
+                #   "raop.latency.ms" = 500;
+                # };
+              }
+            ];
+          };
           "92-low-latency" = {
+            # setup ultra low latency audio
             context.properties = {
               default.clock.rate = 48000;
               default.clock.quantum = 32;
