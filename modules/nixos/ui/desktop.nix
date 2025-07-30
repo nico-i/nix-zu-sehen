@@ -11,7 +11,7 @@
       enable = true;
       settings = {
         default_session = {
-          command = "${pkgs.greetd.agreety}/bin/agreety --time --remember --remember-session --cmd Hyprland";
+          command = "${pkgs.greetd.wlgreet}/bin/wlgreet --command Hyprland";
           user = "greeter";
         };
       };
