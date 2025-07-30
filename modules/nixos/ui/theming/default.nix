@@ -2,13 +2,16 @@
 {
   config = {
     fonts = {
-      packages = with pkgs; [
-        inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default # Rose Pine Hyprland cursor theme "https://github.com/ndom91/rose-pine-hyprcursor"
-        nerd-fonts.geist-mono # Geist Mono font
-        nwg-look # Theme manager for Wayland
-        cm_unicode # Unicode support
-        corefonts # Microsoft core fonts
-      ];
+      packages =
+        with pkgs;
+        [
+          nerd-fonts.geist-mono # Geist Mono font
+          nwg-look # Theme manager for Wayland
+          cm_unicode # Unicode support
+          corefonts # Microsoft core fonts
+        ]
+        ++ inputs.rose-pine-hyprcursor.packages.${pkgs.system}.default # Rose Pine Hyprland cursor theme "https://github.com/ndom91/rose-pine-hyprcursor"
+      ;
 
       enableDefaultPackages = true;
 
