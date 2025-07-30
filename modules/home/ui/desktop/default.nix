@@ -17,6 +17,8 @@
       networkmanagerapplet
     ];
 
+    qt.enable = true;
+
     customHomeConfig = {
       ui = {
         launcher.enable = true;

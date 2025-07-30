@@ -24,4 +24,6 @@ in
     programs.home-manager.enable = true;
     programs.zsh.enable = true; # Enable Zsh shell
   };
+
+  udiskie.enable = true; # front-end that allows to manage removable media such as CDs or flash drives from userspace
 }

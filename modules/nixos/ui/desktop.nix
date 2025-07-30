@@ -1,8 +1,16 @@
-{ ... }:
+{ pkgs, ... }:
 {
   config = {
-    programs = {
-      hyprland.enable = true; # Wayland-based compositor https://hypr.land/
+    programs.hyprland.enable = true; # Wayland-based compositor https://hypr.land/
+
+    environment = {
+      systemPackages = with pkgs; [
+        libsForQt5.qt5.qtquickcontrols2
+        libsForQt5.qt5.qtgraphicaleffects
+      ];
+      sessionVariables = {
+        NIXOS_OZONE_WL = "1"; # hints electron apps to use wayland
+      };
     };
 
     services = {
@@ -16,9 +24,5 @@
       };
     };
 
-    environment.sessionVariables = {
-      NIXOS_OZONE_WL = "1"; # hints electron apps to use wayland
-      WLR_NO_HARDWARE_CURSORS = "1"; # disable hardware cursors to fix invisible cursors on some machines:
-    };
   };
 }
