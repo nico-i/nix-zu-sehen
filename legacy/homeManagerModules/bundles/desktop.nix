@@ -1,4 +1,5 @@
 {
+  lib,
   pkgs,
   config,
   inputs,
@@ -55,7 +56,7 @@
       };
     };
 
-    # audio noise cancellation tool   
+    # audio noise cancellation tool
     services.mako = {
       # lightweight notification daemon for Wayland
       enable = true;
