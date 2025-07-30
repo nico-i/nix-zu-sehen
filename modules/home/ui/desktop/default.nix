@@ -39,9 +39,10 @@
         # https://wiki.hyprland.org/Configuring/Binds/ for more
         bind = [
           "$mainMod, return, exec, alacritty"
-          "$mainMod, \\, exec, alacritty"
 
-          "$mainMod, space, exec, tofi"
+          # Launches Tofi in drun mode, which displays desktop applications from .desktop files
+          # Passes the output to hyprctl to run the selected application
+          "$mainMod, space, exec, tofi-drun | xargs hyprctl dispatch exec --"
 
           "$mainMod, Q, killactive,"
           "$mainMod, F, fullscreen,"
