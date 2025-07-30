@@ -1,6 +1,6 @@
 { lib, pkgs, ... }:
 {
-  option.customHomeConfig.startupScript = lib.mkOption {
+  options.customHomeConfig.startupScript = lib.mkOption {
     default = "";
     description = ''
       Startup script
