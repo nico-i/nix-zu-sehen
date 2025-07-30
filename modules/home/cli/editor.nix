@@ -15,6 +15,7 @@
 
     home.packages = with pkgs; [
       nil # nix language server
+      nixfmt-rfc-style # nix formatter
     ];
   };
 }

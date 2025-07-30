@@ -4,6 +4,11 @@
     # Alacritty - Terminal Emulator
     # https://github.com/alacritty/alacritty
     enable = true;
-    # settings = {}; # See https://mynixos.com/home-manager/option/programs.alacritty.settings
+    settings = {
+      # See `man 5 alacritty` for more information
+      opacity = 0.9;
+      dynamic_padding = true;
+      blur = true;
+    };
   };
 }

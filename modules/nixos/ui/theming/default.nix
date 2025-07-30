@@ -3,13 +3,7 @@
   config = {
     fonts = {
       packages = with pkgs; [
-        (nerdfonts.override {
-          fonts = [
-            "JetBrainsMono"
-            # "Iosevka"
-            "FiraCode"
-          ];
-        })
+        nerd-fonts.geist-mono
         cm_unicode
         corefonts
       ];
@@ -18,9 +12,9 @@
 
       fontconfig = {
         defaultFonts = {
-          monospace = [ "JetBrainsMono" ];
-          sansSerif = [ "JetBrainsMono" ];
-          serif = [ "JetBrainsMono" ];
+          monospace = [ "GeistMono" ];
+          sansSerif = [ "GeistMono" ];
+          serif = [ "GeistMono" ];
         };
       };
     };
@@ -33,6 +27,15 @@
       base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-hard.yaml";
       polarity = "dark";
       image = ./wp.png;
+
+      fonts = {
+        monospace = {
+          package = pkgs.nerd-fonts.geist-mono;
+          name = "Geist Mono";
+        };
+        serif = config.stylix.fonts.sansSerif;
+        sansSerif = config.stylix.fonts.monospace;
+      };
     };
   };
 }

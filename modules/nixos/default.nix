@@ -87,7 +87,6 @@ in
     environment.systemPackages = with pkgs; [
       nix
       git
-      vim
       neofetch
       lsof
       nh # nix cli helper

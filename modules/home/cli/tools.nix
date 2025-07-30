@@ -1,6 +1,7 @@
 { config, ... }:
 {
   config.programs = {
+    fzf.enable = true; # Fuzzy Finder https://junegunn.github.io/fzf/
     zoxide = {
       # A smarter cd command https://github.com/ajeetdsouza/zoxide
       enable = true;
