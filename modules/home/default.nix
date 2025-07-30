@@ -19,6 +19,14 @@ let
 in
 {
   imports = [ ] ++ lib.lists.flatten homeConfigModules;
+
+  options.customHomeConfig.startupScript = lib.mkOption {
+    default = "";
+    description = ''
+      Startup script
+    '';
+  };
+
   config = {
     # home-manager configuration defaults
     programs.home-manager.enable = true;

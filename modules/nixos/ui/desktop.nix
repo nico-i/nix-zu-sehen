@@ -1,12 +1,5 @@
-{ lib, pkgs, ... }:
+{ pkgs, ... }:
 {
-  options.customHomeConfig.startupScript = lib.mkOption {
-    default = "";
-    description = ''
-      Startup script
-    '';
-  };
-
   config = {
     programs.hyprland.enable = true; # Wayland-based compositor https://hypr.land/
 
