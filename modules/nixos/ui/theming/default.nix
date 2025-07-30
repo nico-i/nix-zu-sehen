@@ -1,6 +1,10 @@
 { config, pkgs, ... }:
 {
   config = {
+    environment.systemPackages = with pkgs; [
+      nwg-look
+    ];
+
     fonts = {
       packages = with pkgs; [
         nerd-fonts.geist-mono
