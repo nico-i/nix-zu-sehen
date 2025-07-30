@@ -51,6 +51,8 @@ in
 
     wayland.windowManager.hyprland = {
       enable = true;
+      systemd.enable = false; # See "https://wiki.hypr.land/Useful-Utilities/Systemd-start/" # uwsm
+
       settings = {
         env = [
           "HYPRCURSOR_THEME,rose-pine-hyprcursor"

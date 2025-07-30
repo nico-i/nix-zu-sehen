@@ -1,7 +1,21 @@
 { pkgs, ... }:
 {
   config = {
-    programs.hyprland.enable = true; # Wayland-based compositor https://hypr.land/
+    programs.hyprland = {
+      enable = true; # Wayland-based compositor https://hypr.land/
+      withUWSM = true; # Enable UWSM (Unified Wayland Session Manager) for Hyprland
+    };
+
+    services.greetd = {
+      # Greetd is a lightweight display manager
+      enable = true;
+      settings = {
+        default_session = {
+          command = "${pkgs.greetd.agreety}/bin/agreety --time --remember --remember-session --cmd Hyprland";
+          user = "greeter";
+        };
+      };
+    };
 
     xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     xdg.portal.enable = true;
