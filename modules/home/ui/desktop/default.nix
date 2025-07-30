@@ -46,7 +46,7 @@ in
     services.mako = {
       # lightweight notification daemon for Wayland
       enable = true;
-      defaultTimeout = 10000;
+      "default-timeout" = 10000;
     };
 
     wayland.windowManager.hyprland = {
