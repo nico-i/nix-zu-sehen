@@ -6,9 +6,11 @@
     enable = true;
     settings = {
       # See `man 5 alacritty` for more information
-      opacity = 0.9;
-      dynamic_padding = true;
-      blur = true;
+      window = {
+        opacity = 0.9;
+        dynamic_padding = true;
+        blur = true;
+      };
     };
   };
 }
