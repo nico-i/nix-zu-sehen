@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ lib, pkgs, ... }:
 {
   option.customHomeConfig.startupScript = lib.mkOption {
     default = "";
