@@ -11,9 +11,9 @@
       enable = true;
       settings = {
         default_session = {
-            command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --remember-session --cmd Hyprland";
-            user = "greeter";
-          };
+          command = "${pkgs.greetd.tuigreet}/bin/tuigreet --time --remember --remember-session --cmd Hyprland";
+          user = "greeter";
+        };
       };
     };
 
@@ -27,7 +27,7 @@
       TTYReset = true;
       TTYVHangup = true;
       TTYVTDisallocate = true;
-
+    };
 
     xdg.portal.extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
     xdg.portal.enable = true;
